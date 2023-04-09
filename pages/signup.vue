@@ -71,16 +71,6 @@
 </template>
 
 <script>
-import {
-  addDoc,
-  serverTimestamp,
-  doc,
-  collection,
-  limit,
-  orderBy,
-  query,
-  Timestamp,
-} from 'firebase/firestore'
 export default {
 
   data: () => ({
@@ -90,77 +80,23 @@ export default {
     password: ""
   }),
   methods: {
-    async registerUser() {
-      console.log(this.$fire)
-      const user = {
-        email: this.email,
-        firstName: this.firstName,
-        lastName: this.lastName,
-      }
-      const result = await this.$fire.auth.createUserWithEmailAndPassword(
+    registerUser() {
+
+      this.$fire.auth.createUserWithEmailAndPassword(
         this.email,
         this.password,
       )
-      console.log({ result })
-      this.$fire.database.ref('users').set(user).catch(error => {
-        console.log(error.message)
-      });
-      // this.$router.push('/medicines')
-    }
+        .then(async (userCredential) => {
+          await this.$fire.firestore.collection("users").doc(userCredential.user.uid).set({
+            email: this.email,
+            firstName: this.firstName,
+            lastName: this.lastName,
+          })
+          this.$router.push('/login')
+        })
+        .catch((e) => console.log(e.message))
+    },
   }
 
 }
 </script>
-
-<!--
-@submit.prevent="registerUser"
-v-model="creds.firstName"
-v-model="creds.lastName"
-v-model="creds.email"
-v-model="creds.password"
-
-<script >
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
-import {
-  addDoc,
-  serverTimestamp,
-  doc,
-  collection,
-  limit,
-  orderBy,
-  query,
-  Timestamp,
-} from 'firebase/firestore'
-
-const db = useFirestore()
-const creds = reactive({
-  fistName: '',
-  lastName: '',
-  email: '',
-  password: '',
-})
-
-
-const registerUser = () => {
-  const auth = getAuth()
-  createUserWithEmailAndPassword(auth, creds.email, creds.password)
-    .then((userCredential) => {
-      addDoc(collection(db, 'users', userCredential.user.uid, 'user-details'), {
-        firstName: creds.firstName,
-        lastName: creds.lastName,
-        userEmail: creds.email,
-        createdAt: serverTimestamp(),
-      })
-    })
-    .catch(err => alert(err.message))
-
-
-} 
-</script>
-
-<style scoped>
-.login-box {
-  padding-top: 8rem;
-}
-</style>
- -->

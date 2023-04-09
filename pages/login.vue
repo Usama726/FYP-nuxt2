@@ -1,21 +1,21 @@
- <template>
+<template>
   <div class="login-box flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
     <div class="w-full max-w-md space-y-8">
 
-      <form class=" space-y-6 p-9 shadow-2xl bg-gray-100" action="#" >
+      <form class=" space-y-6 p-9 shadow-2xl bg-gray-100" @submit.prevent="loginUser">
         <input type="hidden" name="remember" value="true">
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
             <label for="email-address" class="mb-2">Email address</label>
             <input id="email-address" name="email" type="email" autocomplete="email" required
               class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mb-6"
-              placeholder="Email address"  v-model="loginEmail" >
+              placeholder="Email address" v-model="email">
           </div>
           <div>
             <label for="password" class="mb-2">Password</label>
             <input id="password" name="password" type="password" autocomplete="current-password" required
               class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mb-6"
-              placeholder="Password" v-model="loginPassword">
+              placeholder="Password" v-model="password">
           </div>
         </div>
 
@@ -46,6 +46,9 @@
           </button>
         </div>
       </form>
+      <div class="container flex justify-center ">
+        <button class="bg-indigo-600 p-2 rounded-md text-yellow-50" @click="googleSignIn">SignIn With Google</button>
+      </div>
     </div>
   </div>
 </template>
@@ -54,23 +57,26 @@
 
 export default {
   data: () => ({
-    loginEmail: "",
-    loginPassword: ""
+    email: "",
+    password: ""
   }),
   methods: {
-    async loginUser() {
-      console.log("strted");
-      try {
-        await this.$fire.auth.signInWithEmailAndPassword(
-          this.loginEmail,
-          this.loginPassword
-        );
-        alert('Successfully logged in');
-        this.$router.push("/medicines");
-      } catch (e) {
-       alert(e);
-      }
-    }
+    loginUser() {
+      this.$fire.auth.signInWithEmailAndPassword(
+        this.email,
+        this.password
+      )
+        .then(() => this.$router.push("/medicines"))
+        .catch((e) => alert(e))
+    },
+    googleSignIn() {
+      const provider = new this.$fireModule.auth.GoogleAuthProvider()
+      this.$fire.auth.signInWithPopup(provider)
+        .then(() => {
+          this.$router.push('/medicines')
+        })
+        .catch((error) => console.log(error.message))
+    },
   }
 };
 </script>

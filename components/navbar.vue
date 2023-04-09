@@ -1,15 +1,12 @@
 <template>
-  <div class="
-                      w-full
-                      z-40
-                      text-white
-                      bg-gray-600
-                      px-6
-                      py-2          
-                      md:flex
-                      justify-between
-                      items-center
-                      ">
+  <div class="w-full z-40
+    text-white
+    bg-gray-600
+    px-6
+    py-2          
+    md:flex
+    justify-between
+    items-center">
     <div class="logo">
       <NuxtLink to="/">
         <img class="logo-img" src="~/assets/images/logo.png" alt="logo">

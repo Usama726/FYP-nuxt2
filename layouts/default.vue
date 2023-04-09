@@ -1,9 +1,9 @@
 <template>
   <div>
-  <navbar :links="links"></navbar>
-  <Nuxt />
-  <Thefooter :links="links"></Thefooter>
-</div>
+    <navbar :links="links"></navbar>
+    <Nuxt />
+    <Thefooter :links="links"></Thefooter>
+  </div>
 </template>
 
 
@@ -14,7 +14,7 @@ export default {
     links: [
       { id: 1, name: "Lab Tests", link: "lab-tests" },
       { id: 2, name: "Compounded Medicines", link: "compounded" },
-      { id: 3, name: " Doctor Consulatation", link: "consultation" },
+      { id: 3, name: "Doctor Consulatation", link: "consultation" },
       { id: 4, name: "Medicines", link: "medicines" },
     ],
 
