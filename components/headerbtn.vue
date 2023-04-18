@@ -4,7 +4,7 @@
       bg-gray-300
       text-black
       font-sm
-      hover:scale-110
+      hover:scale-105
       rounded
       py-1.5
       px-4

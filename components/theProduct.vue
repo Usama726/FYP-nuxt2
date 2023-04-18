@@ -2,7 +2,7 @@
   <div class="product-box ">
     <div>
       <div class="hover:scale-110 ">
-        <img class="w-full h-48" :src="require(`~/assets/images/${product.image}`)"  alt={{ product.image }}>
+        <img class="w-full h-48" :src="product.imageUrl" alt="productImage">
       </div>
       <div class="p-4">
         <h1 class="text-xl font-bold">{{ product.name }}</h1>
@@ -28,7 +28,6 @@ export default {
     },
 
   },
-
 };
 
 </script>
