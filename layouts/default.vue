@@ -13,7 +13,7 @@ export default {
   data: () => ({
     links: [
       { id: 1, name: "Lab Tests", link: "lab-tests" },
-      { id: 2, name: "Compounded Medicines", link: "compounded" },
+      { id: 2, name: "Compounded", link: "compounded" },
       { id: 3, name: "Doctor Consulatation", link: "consultation" },
       { id: 4, name: "Medicines", link: "medicines" },
     ],

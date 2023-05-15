@@ -7,7 +7,7 @@
         <div class="flex flex-wrap -mx-3 mb-6">
 
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2" for="grid-first-name">
               First Name
             </label>
             <input
@@ -16,7 +16,7 @@
 
           </div>
           <div class="w-full md:w-1/2 px-3">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+            <label class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2" for="grid-last-name">
               Last Name
             </label>
             <input
@@ -26,14 +26,14 @@
         </div>
         <div class="-space-y-px rounded-md shadow-sm">
           <div>
-            <label for="email-address" class="">Email address</label>
-            <input id="email-address" name="email" type="email" autocomplete="email" required
+            <label for="email-address" class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Email address</label>
+            <input id="email-address" name="email" type="email" required
               class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mb-6"
               placeholder="Email address" v-model="email">
           </div>
           <div>
-            <label for="password" class="mb-2">Password</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required
+            <label for="password" class="block uppercase tracking-wide text-gray-700 text-sm font-bold mb-2">Password</label>
+            <input id="password" name="password" type="password"  required
               class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm mb-6"
               placeholder="Password" v-model="password">
           </div>
@@ -92,6 +92,10 @@ export default {
             firstName: this.firstName,
             lastName: this.lastName,
           })
+          this.firstName = '',
+            this.lastName = '',
+          this.email = '',
+            this.password = '',
           this.$router.push('/login')
         })
         .catch((e) => console.log(e.message))

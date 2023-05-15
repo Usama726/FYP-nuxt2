@@ -1,11 +1,7 @@
 <template>
-  <!-- Container for demo purpose -->
   <div>
-
-    <!-- Section: Design Block -->
-    <section class="mb-40 relative ">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="block w-full"
-        style="margin: auto; z-index: -10;" height="650" preserveAspectRatio="none" viewBox="0 0 1920 880">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="block w-full"
+        style="margin: auto; z-index: -10;" height="400" preserveAspectRatio="none" viewBox="0 0 1920 880">
         <g transform="translate(960,440) scale(1,1) translate(-960,-440)">
           <linearGradient id="lg-0.047955344060927496" x1="0" x2="1" y1="0" y2="0">
             <stop stop-color="hsl(217, 88%, 33.7%)" offset="0"></stop>
@@ -43,74 +39,8 @@
           </path>
         </g>
       </svg>
-
-      <div class=" container mx-auto px-6 md:px-12 xl:px-32 " style="margin-top: -450px;">
-        <section class="px-6 py-16 md:py-16 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 align-center justify-around rounded-lg shadow-xl bg-design" >
-          <nuxt-link to="/medicines" class="text-center">
-            <img src="~/assets/images/medicines.jpg" class=" mx-auto mb-2  w-36 h-36 md:w-48 rounded-3xl " alt="Avatar" />
-            <h5 class="mb-6 text-xl font-bold leading-tight hover:rounded-md hover:bg-gray-200 p-2">Medicines</h5>
-            
-          </nuxt-link >
-          
-          <nuxt-link to="/consultation" class="text-center">
-            <img src="~/assets/images/online-consultation.jpg" class=" mx-auto mb-2 h-36 w-36 md:w-48 rounded-3xl " alt="Avatar" />
-            <h5 class="mb-6 text-xl font-bold leading-tight  hover:rounded-md hover:bg-gray-200 p-2">Consultation</h5>
-            
-          </nuxt-link >
-          <nuxt-link to="/compounded" class="text-center">
-            <img src="~/assets/images/compounded.jpg" class=" mx-auto mb-2 h-36 w-36 md:w-48 rounded-3xl " alt="Avatar" />
-            <h5 class="mb-6 text-xl font-bold leading-tight hover:rounded-md hover:bg-gray-200 p-2">Compounded </h5>
-            
-          </nuxt-link >
-          <nuxt-link to="/lab-tests" class="text-center">
-            <img src="~/assets/images/lab-tests.jpg" class=" mx-auto mb-2 h-36 w-36 md:w-48 rounded-3xl " alt="Avatar" />
-            <h5 class="mb-6 text-xl font-bold leading-tight hover:rounded-md hover:bg-gray-200 p-2 ">Lab Tests</h5>
-            
-          </nuxt-link >
-          
-          
-        </section>
-      </div>
-      <div>
-        <testimonials />
-      </div>
-
-      <div class="container mx-auto px-6 md:px-12 xl:px-32">
-        <div class="text-center text-gray-800">
-          <div class="block rounded-lg shadow-2xl shadow-inherit px-6 py-12 md:py-2 md:px-12 bg-design"
-            style="margin-top: 50px; ">
-            <h1 class="text-2xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-12">The best service in the market
-              <br /><span class="text-blue-600">for your helth</span>
-            </h1>
-            <nuxt-link to="/signup"
-              class="inline-block px-7 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-blue-600 text-white font-bold text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-              data-mdb-ripple="true" data-mdb-ripple-color="light" role="button">Sign Up</nuxt-link>
-            <nuxt-link to="/about"
-              class="inline-block px-7 py-3  bg-blue-100 text-black font-bold text-xs leading-tight uppercase rounded hover:text-blue-700 hover:border-2 border-blue-700 focus:bg-blue-200 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
-              data-mdb-ripple="true" data-mdb-ripple-color="light" role="button">Learn more</nuxt-link>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Section: Design Block -->
-
-  </div>
-  <!-- Container for demo purpose -->
+      
+    
+ 
+</div>
 </template>
-
-
-<script>
-
-export default {
-
-  name: "IndexPage",
-
-}
-</script>
-
-
-<style scoped>
-.bg-design{
-  background-color: hsla(0, 0%, 100%, 0.8);backdrop-filter: saturate(200%) blur(25px);
-}
-</style>

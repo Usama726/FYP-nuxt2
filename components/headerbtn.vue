@@ -1,9 +1,9 @@
 <template>
   <button
     class="
-      bg-gray-300
-      text-black
-      font-sm
+      border-2 border-white
+      text-white
+      font-bold
       hover:scale-105
       rounded
       py-1.5
