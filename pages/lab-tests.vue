@@ -1,8 +1,8 @@
 <template>
   <div>
 
-    <div class="res">
-      <div class="res-content">
+    <div class="">
+      <div class=" py-24 res-content">
 
 
         <div class="res-icons">

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :links="links"></navbar>
+    <navbar :links="links"></navbar> 
     <Nuxt />
     <Thefooter :links="links"></Thefooter>
   </div>

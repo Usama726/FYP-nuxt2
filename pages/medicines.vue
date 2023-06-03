@@ -1,8 +1,10 @@
 <template>
-  <div class="product-page flex justify-around flex-wrap ">
+  <div class="py-16  px-6 ">
+    <div class="grid grid-cols-2 sm:flex justify-around flex-wrap gap-4">
     <the-product :product="product" v-for="(product, index) in products" :key="`${product.id}-product-${index}`">
     </the-product>
   </div>
+</div>
 </template>
 
 <script>
@@ -33,10 +35,10 @@ export default {
 
 <style scoped>
 .product-page {
-  max-width: 1200px;
-  margin: 0 auto;
+  /* max-width: 1200px; */
+  /* margin: 0 auto;
   padding: 8rem 0;
-  gap: 1.5rem;
+  gap: 1.5rem; */
 
 }
 </style>

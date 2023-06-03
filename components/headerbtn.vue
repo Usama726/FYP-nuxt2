@@ -7,8 +7,8 @@
       hover:scale-105
       rounded
       py-1.5
-      px-4
-      mr-2
+      px-2
+      
       
     "
   >

@@ -1,7 +1,7 @@
 
 <template>
   <div >
-    <div class="flex justify-center ">
+    <div class=" pt-16 flex justify-center ">
     <img class=" mt-6 w-48" src="~/assets/images/prescription-upload-image.avif">
   </div>
     <div class="border-2 border-black mt-8 mb-4 p-2  sm:w-1/2 m-auto center">

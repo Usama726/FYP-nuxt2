@@ -1,20 +1,24 @@
 <template>
-  <div class="product-box ">
-    <div>
-      <div class="hover:scale-110 ">
-        <img class="w-full h-48" :src="product.imageUrl" alt="productImage">
-      </div>
-      <div class="p-4">
-        <h1 class="text-xl font-bold">{{ product.name }}</h1>
-        <p class="mb-2">{{ product.description }}</p>
-        <p class="font-bold mb-2">{{ product.price }}</p>
-        <div class="btn-align">
-          <headerbtn>
-            ADD TO CART
-          </headerbtn>
+  <div class="pt-12">
+    <nuxt-link :to="`/products/${product.id}`">
+      <div class="product-box  rounded-lg border-2 border-blue-500">
+
+        <div class="hover:scale-110 ">
+          <img class="w-56 h-48 " :src="product.imageUrl" alt="productImage">
+        </div>
+        <div class="p-4">
+          <h1 class="text-sm md:text-lg font-bold">{{ product.name }}</h1>
+          <p class="mb-2">{{ product.description }}</p>
+          <p class="font-bold mb-2">{{ product.price }}</p>
+          <div class="btn-align">
+
+            <button
+              class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white">ADD
+              TO CART</button>
+          </div>
         </div>
       </div>
-    </div>
+    </nuxt-link>
   </div>
 </template>
 
@@ -28,17 +32,17 @@ export default {
     },
 
   },
+
 };
 
 </script>
 
 <style lang="css" scoped>
 .product-box {
-  width: 280px;
-  border-radius: 10px;
+  max-width: 350px;
   background-color: rgb(236, 233, 233);
   overflow: hidden;
-  box-shadow: black 1px 2px 7px 1px;
+
 }
 
 .btn-align {

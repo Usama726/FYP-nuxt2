@@ -1,5 +1,5 @@
 <template>
-  <div class=" mt-9 mx-auto px-6 md:px-12 xl:px-32">
+  <div class=" mt-16 mx-auto px-6 md:px-12 xl:px-32">
     <div class="px-6 py-24 md:py-2 md:px-12">
       <div class=" mx-auto text-center md:max-w-xl lg:max-w-3xl">
         <h3 class="mb-6 text-3xl font-bold text-neutral-800 ">
@@ -13,7 +13,7 @@
       </div>
 
       <!-- Container for the Testimonials -->
-      <div class=" container mx-auto grid gap-16 text-center ">
+      <div class=" container mx-auto grid gap-16 text-center px-6 md:px-12 xl-px-0 ">
         <!-- First Testimonial -->
         <div class="mb-12 md:mb-0  flex flex-col justify-center gap-3 md:flex-row ">
           <div class="w-[100%] flex justify-center md:justify-start ">

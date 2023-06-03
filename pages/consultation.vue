@@ -1,5 +1,6 @@
 <template>
-  <div class="border-2 border-black mt-8 mb-4 p-2  sm:w-1/2 m-auto chat-window ">
+  <div class="pt-24">
+  <div class="border-2 border-black  mb-4 p-2  sm:w-1/2 m-auto chat-window ">
     <ul >
       <li class="w-2/3" v-for="message in messages" :key="message.id">
         <div class="flex flex-col border border-gray-300  rounded-lg mb-3 position ">
@@ -25,6 +26,7 @@
       </headerbtn>
     </div>
   </div>
+</div>
 </template>
 
 <script>

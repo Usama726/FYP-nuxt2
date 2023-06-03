@@ -1,7 +1,7 @@
 <template>
   <!-- Container for demo purpose -->
   <div>
-
+      
     <!-- Section: Design Block -->
     <section class="mb-40 relative ">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="block w-full"
@@ -77,7 +77,7 @@
 
       <div class="container mx-auto px-6 md:px-12 xl:px-32">
         <div class="text-center text-gray-800">
-          <div class="block rounded-lg shadow-2xl shadow-inherit px-6 py-12 md:py-2 md:px-12 bg-design"
+          <div class="block rounded-lg shadow-xl  px-6 py-6 md:py-12 md:px-12 bg-design"
             style="margin-top: 50px; ">
             <h1 class="text-2xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-12">The best service in the market
               <br /><span class="text-blue-600">for your helth</span>
@@ -85,7 +85,7 @@
             <nuxt-link to="/signup"
               class="inline-block px-7 py-3 mb-2 md:mb-0 mr-0 md:mr-2 bg-blue-600 text-white font-bold text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
               data-mdb-ripple="true" data-mdb-ripple-color="light" role="button">Sign Up</nuxt-link>
-            <nuxt-link to="/about"
+            <nuxt-link to="/aboutUs"
               class="inline-block px-7 py-3  bg-blue-100 text-black font-bold text-xs leading-tight uppercase rounded hover:text-blue-700 hover:border-2 border-blue-700 focus:bg-blue-200 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out"
               data-mdb-ripple="true" data-mdb-ripple-color="light" role="button">Learn more</nuxt-link>
           </div>
