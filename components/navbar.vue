@@ -119,7 +119,7 @@
             <li><nuxt-link to="/" @click="isOpen = false" class="my-4 block text-center hover:scale-110 ">Home</nuxt-link></li>
             <li><nuxt-link to="/aboutus" @click="isOpen = false" class="my-4 block text-center hover:scale-110">About</nuxt-link></li>
             <li><nuxt-link to="/medicines" @click="isOpen = false" class="my-4 block text-center hover:scale-110">Medicines</nuxt-link></li>
-            <li><nuxt-link to="/contactus" @click="isOpen = false" class="my-4 block text-center hover:scale-110">Contact</nuxt-link></li>
+            <li><nuxt-link to="/contactus" @click="drawer" class="my-4 block text-center hover:scale-110">Contact</nuxt-link></li>
             <li v-if="!user" class="flex justify-center gap-3">
               <nuxt-link to="/login" @click="isOpen = false"
                 class="my-5  text-center font-semibold cta inline-block text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-2 rounded hover:text-white">Login</nuxt-link>
@@ -189,6 +189,7 @@ export default {
   methods: {
     drawer() {
       this.isOpen = !this.isOpen;
+      console.log(this.isOpen)
     },
     logoutbtn() {
       this.$fire.auth.signOut();

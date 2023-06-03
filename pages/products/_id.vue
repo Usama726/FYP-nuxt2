@@ -21,15 +21,13 @@
 <script>
 
 export default {
-  async asyncData( {route} ) {
-    console.log('here i am...')
-    console.log(route)
-
-    const doc = await this.$fire.firestore.collection('products')
-      .doc(route.id)
+  data: () => ({
+    product: {}
+  }),
+  async created() {
+    const doc = await this.$fire.firestore.collection('products').doc(this.$route.params.id)
       .get()
-    const product = doc.exists ? doc.data() : null
-    return { product }
+    this.product = doc.exists ? doc.data() : {}
   }
 };
 

@@ -1,9 +1,9 @@
 <template>
   <div  id="nav">
     <top-svg></top-svg>
-    <div class="bg-design w-full pt-2 p-4">
+    <div class="bg-design w-full pt-2 px-12">
 
-      <div class=" mt-[-400px] mx-auto md:p-6 md:container lg:w-1/2">
+      <div class=" mt-[-400px] max-w-2xl mx-auto">
         <div class="mt-24 mb-2 bg-white flex  justify-center rounded">
           <span class="text-3xl  text-blue-500 font-bold p-3 ">
             Sign-in
@@ -11,7 +11,7 @@
 
         </div>
 
-        <div class="bg-white shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
+        <div class="bg-white shadow-2xl rounded px-8 pt-6 pb-8 mb-16">
           <form method="POST" @submit.prevent="loginUser">
             <div class="mb-8">
               <label for="username" class="block text-gray-700 text-sm font-bold mb-2">

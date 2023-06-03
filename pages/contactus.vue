@@ -21,8 +21,8 @@
           <div class="container mx-auto xl:px-32">
             <div class="grid items-center lg:grid-cols-2">
               <div class="mb-12 md:mt-12 lg:mt-0 lg:mb-0">
-                <div class="relative z-[10] block rounded-lg bg-white px-6 py-12 md:px-12 lg:-mr-14">
-                  <h2 class="mb-12 text-3xl font-bold text-center text-blue-500">Contact us</h2>
+                <div class="relative z-[10] block rounded-lg bg-white px-6 py-12 md:px-12 lg:-mr-14 shadow-lg">
+                  <h2 class="bg-blue-500 animate-pulse rounded-lg p-2 mb-12 text-3xl font-bold text-center text-white">Contact us</h2>
                   <form>
                     <div class="mb-8">
                       <label  class="block text-gray-700 text-sm font-bold mb-2">

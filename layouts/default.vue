@@ -1,6 +1,6 @@
 <template>
   <div>
-    <navbar :links="links"></navbar> 
+    <navbar /> 
     <Nuxt />
     <Thefooter :links="links"></Thefooter>
   </div>
@@ -19,8 +19,11 @@ export default {
     ],
 
   }),
-
-
-
 }
 </script>
+
+<style scoped>
+body{
+  scroll-behavior: smooth;
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
   <div class="container m-auto">
-    <table v-if="!showEditForm" class="  shadow-lg bg-white border-separate m-auto mt-12 mb-8">
+    <table v-if="!showEditForm" class="  shadow-lg bg-white border-separate m-auto pt-24 mb-8">
       <tr>
         <th class="w-48  bg-gray-400 border text-center px-8 py-4">Image</th>
         <th class="bg-gray-400 border text-center px-8 py-4">Name</th>
@@ -33,19 +33,20 @@
       </tr>
     </table>
     <div v-else="showEditForm">
-      <h2 class="font-bold text-xl text-center mt-4">Product Details</h2>
+      <h2 class="font-bold text-xl text-center pt-24">Product Details</h2>
       <div class="login-box flex min-h-full items-center justify-center py-4 px-4 sm:px-6 lg:px-8 ">
         <div class="w-full max-w-lg space-y-2">
           <form class="  p-9 shadow-2xl bg-gray-100" @submit.prevent="updateProduct">
-            <input type="hidden" name="remember" value="true">
+           
             <div class=" flex-wrap -mx-3 mb-6">
-              <div class="w-full md:w-1/2 px-3 mb-2">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                  Choose Image
+              <div class="w-full  px-3 mb-2">
+                <label class="text-center block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                  Product Image
                 </label>
-                <input type="file" ref="fileInput">
+                <img class="h-24 w-1/2 mx-auto mb-4" :src="editedProduct.imageUrl">
+                <!-- <input type="file" ref=fileInput > -->
               </div>
-              <div class="w-full md:w-1/2 px-3 mb-2">
+              <div class="w-full  px-3 mb-2">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                   Product Name
                 </label>
@@ -54,7 +55,7 @@
                   required type="text" id="productName" v-model="editedProduct.name">
 
               </div>
-              <div class="w-full md:w-1/2 px-3 mb-2">
+              <div class="w-full  px-3 mb-2">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                   Product Description
                 </label>
@@ -63,7 +64,7 @@
                   required type="text" id="description" v-model="editedProduct.description"></textarea>
               </div>
 
-              <div class="w-full md:w-1/2 px-3 ">
+              <div class="w-full  px-3 ">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ">
                   Product Price
                 </label>
@@ -143,11 +144,11 @@ export default {
 
     },
     async updateProduct() {
-      // const file = this.$refs.fileInput.files[0]
-      // const storageRef = this.$fire.storage.ref()
-      // const imageRef = storageRef.child(`images/${file.name}`)
-      // const snapshot = await imageRef.put(file)
-      // this.imageUrl = await snapshot.ref.getDownloadURL()
+      const file = this.$refs.fileInput.files[0]
+      const storageRef = this.$fire.storage.ref()
+      const imageRef = storageRef.child(`images/${file.name}`)
+      const snapshot = await imageRef.put(file)
+      this.editedProduct.imageUrl = await snapshot.ref.getDownloadURL()
 
       const { id, ...updatedProduct } = this.editedProduct
       await this.$fire.firestore.collection('products').doc(id).update(updatedProduct)

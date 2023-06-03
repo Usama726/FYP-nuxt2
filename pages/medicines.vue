@@ -1,6 +1,6 @@
 <template>
   <div class="py-16  px-6 ">
-    <div class="grid grid-cols-2 sm:flex justify-around flex-wrap gap-4">
+    <div class="flex justify-around flex-wrap gap-4">
     <the-product :product="product" v-for="(product, index) in products" :key="`${product.id}-product-${index}`">
     </the-product>
   </div>
