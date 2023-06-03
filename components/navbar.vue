@@ -116,10 +116,10 @@
 
           <ul
             class="container mx-auto p-5 uppercase divide-y text-md font-bold md:text-xl flex flex-col align-center justify-center">
-            <li><nuxt-link to="/" class="my-4 block text-center hover:scale-110 ">Home</nuxt-link></li>
-            <li><nuxt-link to="/aboutus" class="my-4 block text-center hover:scale-110">About</nuxt-link></li>
-            <li><nuxt-link to="/medicines" class="my-4 block text-center hover:scale-110">Medicines</nuxt-link></li>
-            <li><nuxt-link to="/contactus" class="my-4 block text-center hover:scale-110">Contact</nuxt-link></li>
+            <li><nuxt-link to="/" @click="isOpen = false" class="my-4 block text-center hover:scale-110 ">Home</nuxt-link></li>
+            <li><nuxt-link to="/aboutus" @click="isOpen = false" class="my-4 block text-center hover:scale-110">About</nuxt-link></li>
+            <li><nuxt-link to="/medicines" @click="isOpen = false" class="my-4 block text-center hover:scale-110">Medicines</nuxt-link></li>
+            <li><nuxt-link to="/contactus" @click="isOpen = false" class="my-4 block text-center hover:scale-110">Contact</nuxt-link></li>
             <li v-if="!user" class="flex justify-center gap-3">
               <nuxt-link to="/login" @click="isOpen = false"
                 class="my-5  text-center font-semibold cta inline-block text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-2 rounded hover:text-white">Login</nuxt-link>
@@ -211,7 +211,7 @@ export default {
   },        
   mounted() {
     document.addEventListener("keydown", e => {
-      if (e.keydown == 27 && this.isOpen)
+      if (e.keyCode == 27 && this.isOpen)
         this.isOpen = false;
     });
     this.$fire.auth.onAuthStateChanged(user => {
