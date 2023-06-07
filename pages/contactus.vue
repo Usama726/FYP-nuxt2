@@ -3,15 +3,7 @@
     <!-- Top SVG of Page -->
     <top-svg />
     <!-- Top Banner Of Every Page -->
-    <div class="container  mx-auto px-6 md:px-12 xl:px-32 mb-6 z-20">
-      <div class="rotate-[-5deg] animate-bounce mt-[-280px] block px-6 py-6 md:py-2 md:px-12 ">
-        <span
-          class=" text-4xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:display-none text-white">Contact
-          Us</span>
-      </div>
-    </div>
-
-
+    <top-header>Contact Us</top-header>
     <!-- Conatct Form -->
     <!-- Container for demo purpose -->
     <div class="mt-48 container my-24 mx-auto md:px-6">
@@ -85,31 +77,3 @@
   </div>
 </template>
 
-<style scoped>
-.animate-bounce {
-  animation: bounce 1s;
-}
-
-@keyframes bounce {
-
-  0% {
-    transform: translatex(-100%);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-
-  50% {
-    transform: translatex(0%);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-
-  75% {
-    transform: translatex(25%);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-
-  100% {
-    transform: translatex(0%);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-}
-</style>

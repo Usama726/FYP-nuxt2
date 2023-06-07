@@ -1,10 +1,12 @@
 <template>
-  <div>
-   <!-- Top SVG of Page -->
-   <top-svg />
-    <!-- Top Banner Of Every Page -->
-    <top-header>About Us</top-header>
-  </div>
+  <div class=" mx-auto px-6  xl:px-32 mb-6 z-20">
+      <div class="animate-bounce  mt-[-340px] block px-6 py-6 md:py-2  ">
+        <span
+          class="animate-pulse text-4xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-3 sm:display-none text-white">
+        <slot></slot>
+        </span>
+      </div>
+    </div>
 </template>
 
 <style scoped>

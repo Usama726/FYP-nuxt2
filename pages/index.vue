@@ -1,7 +1,7 @@
 <template>
   <!-- Container for demo purpose -->
   <div>
-      
+    <navbar />
     <!-- Section: Design Block -->
     <section class="mb-40 relative ">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="block w-full"
@@ -44,31 +44,34 @@
         </g>
       </svg>
 
+
       <div class=" container mx-auto px-6 md:px-12 xl:px-32 " style="margin-top: -450px;">
-        <section class="px-6 py-16 md:py-16 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 align-center justify-around rounded-lg shadow-xl bg-design" >
-          <nuxt-link to="/medicines" class="text-center">
+        <section
+          class="px-6 py-16 md:py-16 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 align-center justify-around rounded-lg shadow-xl bg-design">
+          <nuxt-link to="/medicines" class="text-center hover:scale-105">
             <img src="~/assets/images/medicines.jpg" class=" mx-auto mb-2  w-36 h-36 md:w-48 rounded-3xl " alt="Avatar" />
             <h5 class="mb-6 text-xl font-bold leading-tight hover:rounded-md hover:bg-gray-200 p-2">Medicines</h5>
-            
-          </nuxt-link >
-          
-          <nuxt-link to="/consultation" class="text-center">
-            <img src="~/assets/images/online-consultation.jpg" class=" mx-auto mb-2 h-36 w-36 md:w-48 rounded-3xl " alt="Avatar" />
+
+          </nuxt-link>
+
+          <nuxt-link to="/consultation" class="text-center hover:scale-105">
+            <img src="~/assets/images/online-consultation.jpg" class=" mx-auto mb-2 h-36 w-36 md:w-48 rounded-3xl "
+              alt="Avatar" />
             <h5 class="mb-6 text-xl font-bold leading-tight  hover:rounded-md hover:bg-gray-200 p-2">Consultation</h5>
-            
-          </nuxt-link >
-          <nuxt-link to="/compounded" class="text-center">
+
+          </nuxt-link>
+          <nuxt-link to="/compounded" class="text-center hover:scale-105">
             <img src="~/assets/images/compounded.jpg" class=" mx-auto mb-2 h-36 w-36 md:w-48 rounded-3xl " alt="Avatar" />
             <h5 class="mb-6 text-xl font-bold leading-tight hover:rounded-md hover:bg-gray-200 p-2">Compounded </h5>
-            
-          </nuxt-link >
-          <nuxt-link to="/lab-tests" class="text-center">
+
+          </nuxt-link>
+          <nuxt-link to="/lab-tests" class="text-center hover:scale-105">
             <img src="~/assets/images/lab-tests.jpg" class=" mx-auto mb-2 h-36 w-36 md:w-48 rounded-3xl " alt="Avatar" />
             <h5 class="mb-6 text-xl font-bold leading-tight hover:rounded-md hover:bg-gray-200 p-2 ">Lab Tests</h5>
-            
-          </nuxt-link >
-          
-          
+
+          </nuxt-link>
+
+
         </section>
       </div>
       <div>
@@ -77,8 +80,7 @@
 
       <div class="container mx-auto px-6 md:px-12 xl:px-32">
         <div class="text-center text-gray-800">
-          <div class="block rounded-lg shadow-xl  px-6 py-6 md:py-12 md:px-12 bg-design"
-            style="margin-top: 50px; ">
+          <div class="block rounded-lg shadow-xl  px-6 py-6 md:py-12 md:px-12 bg-design" style="margin-top: 50px; ">
             <h1 class="text-2xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-12">The best service in the market
               <br /><span class="text-blue-600">for your helth</span>
             </h1>
@@ -92,25 +94,31 @@
         </div>
       </div>
     </section>
-    <!-- Section: Design Block -->
-
+    <!-- Footer Block -->
+    <Thefooter :links="links"></Thefooter>
   </div>
   <!-- Container for demo purpose -->
 </template>
 
-
 <script>
 
 export default {
-
   name: "IndexPage",
 
+  data: () => ({
+    links: [
+      { id: 1, name: "Lab Tests", link: "lab-tests" },
+      { id: 2, name: "Compounded", link: "compounded" },
+      { id: 3, name: "Doctor Consulatation", link: "consultation" },
+      { id: 4, name: "Medicines", link: "medicines" },
+    ],
+
+  }),
 }
 </script>
 
-
-<style scoped>
+<style scoped >
 .bg-design{
-  background-color: hsla(0, 0%, 100%, 0.8);backdrop-filter: saturate(200%) blur(25px);
+  background-color: hsla(0, 0%, 100%, 0.8); backdrop-filter: saturate(200%) blur(25px);
 }
-</style>
+</style >

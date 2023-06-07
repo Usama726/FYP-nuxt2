@@ -14,7 +14,7 @@
     </ul>
     <form @submit.prevent="sendMessage">
       <input class="border-2 border-black focus:outline-none mt-2 p-1 w-3/4" v-model="newMessage" type="text" required>
-      <headerbtn type="submit">Send</headerbtn>
+      <button class="bg-blue-300 py-2 px-3 rounded-lg" type="submit">Send</button>
     </form>
   </div>
 </template>

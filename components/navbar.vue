@@ -10,7 +10,7 @@
         <div class="flex justify-between align-middle w-full ">
           <!-- Header logo -->
           <div>
-            <img src="~assets/images/logo.png" class="logo-img">
+            <nuxt-link to="/"><img src="~assets/images/logo.png" class="logo-img"></nuxt-link>
           </div>
           <!-- Navbar -->
           <div class="hidden md:block">

@@ -9,15 +9,15 @@
       </tr>
       <tr v-for="(user, index) in users" :key="index">
         <td class="border px-8 py-4">
-          <p>{{ user.FirstName }} {{ user.LastName }}</p>
+          <p>{{ user.firstName }} {{ user.lastName }}</p>
         </td>
         <td class=" border px-8 py-4">
-          {{ user.Email }}
+          {{ user.email }}
         </td>
 
         <td>
           <button @click="deleteUser(user.id)"
-            class="border px-4 py-2 rounded-lg text-black bg-gray-300 hover:scale-105  ">Delete User</button>
+            class="border px-4 py-2 rounded-lg text-white bg-red-500 hover:scale-105  ">Delete User</button>
         </td>
       </tr>
     </table>
@@ -33,24 +33,36 @@ export default {
     users: [],
 
   }),
+  
   async created() {
-    const items = []
-    await this.$fire.firestore.collection('Users').get().then((querySnapshot) => {
+    const userslist = []
+    await this.$fire.firestore.collection('users').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        items.push({
+        userslist.push({
           id: doc.id,
           ...doc.data()
         })
       });
 
-      this.users = items
+      this.users = userslist
     })
+
   },
   methods: {
+    watcher(){
+      this.$fire.firestore.collection('users').onSnapshot((querySnapshot) => {
+        this.users=[];
+        querySnapshot.forEach((doc)=> {
+          this.users.push(doc);
+        });
+      });
+    
+  },
     async deleteUser(userId) {
-      await this.$fire.firestore.collection('Users').doc(userId).delete()
+      await this.$fire.firestore.collection('users').doc(userId).delete()
         .then(() => {
-          this.$router.push('/userslist')
+          this.watcher();
+          alert('User successfully deleted ')
         })
 
     },

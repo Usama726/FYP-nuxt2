@@ -1,46 +1,50 @@
 <template>
-  <div class="container m-auto">
-    <table v-if="!showEditForm" class="  shadow-lg bg-white border-separate m-auto pt-24 mb-8">
+  <div>
+    <table v-if="!showEditForm" class="container bg-white border-separate mx-auto px-16 pt-24 mb-8">
       <tr>
-        <th class="w-48  bg-gray-400 border text-center px-8 py-4">Image</th>
-        <th class="bg-gray-400 border text-center px-8 py-4">Name</th>
-        <th class="w-56 bg-gray-400 border text-center px-8 py-4 ">Description</th>
-        <th class="bg-gray-400 border text-center px-8 py-4">Price</th>
+        <th class="w-48  bg-blue-500 text-white border text-center px-4 py-2">Image</th>
+        <th class="w-48 bg-blue-500 text-white border text-center px-4 py-2">Name</th>
+        <th class="flex flex-1 justify-center bg-blue-500 text-white border px-4 py-2 ">Description</th>
+        <th class="bg-blue-500 text-white border text-center px-4 py-2">Price</th>
+        <th class="bg-blue-500 text-white border text-center px-4 py-2">Modify</th>
 
       </tr>
       <tr v-for="(product, index) in products" :key="index">
-        <td class="border-2 px-2 py-2 bg-gray-100 ">
+        <td class="border-2 border-blue-200 px-2 py-2 ">
           <img class="h-24 w-full" :src="product.imageUrl" />
         </td>
-        <td class="border-2 px-2 py-2 bg-gray-100">
+        <td class="border-2 border-blue-200 px-2 py-2 text-center">
           {{ product.name }}
         </td>
-        <td class=" border-2 px-2 py-2 bg-gray-100">
+        <td class=" border-2 border-blue-200 px-2 py-2 text-justify">
           {{ product.description }}
         </td>
-        <td class="border-2 px-2 py-2 text-center bg-gray-100">
+        <td class="border-2 border-blue-200 px-2 py-2 text-center">
           {{ product.price }}
         </td>
-        <td>
-          <button @click="$router.push({
-            query: { id: product.id }
-          })" class="border px-4 py-2 rounded-lg text-black bg-gray-300 hover:scale-105 font-bold ">Edit</button>
-        </td>
-        <td>
-          <button @click="deleteProduct(product.id)"
-            class="border px-4 py-2 rounded-lg text-black bg-gray-300 hover:scale-105 font-bold ">Delete</button>
+        <td class="border-2 border-blue-200">
+          <div class="flex gap-1 ">
+            <button @click="$router.push({
+              query: { id: product.id }
+            })" class="border px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 font-bold ">Edit</button>
+
+            <button @click="deleteProduct(product.id)"
+              class="border px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700 font-bold ">Delete</button>
+          </div>
         </td>
       </tr>
     </table>
+
     <div v-else="showEditForm">
       <h2 class="font-bold text-xl text-center pt-24">Product Details</h2>
       <div class="login-box flex min-h-full items-center justify-center py-4 px-4 sm:px-6 lg:px-8 ">
         <div class="w-full max-w-lg space-y-2">
           <form class="  p-9 shadow-2xl bg-gray-100" @submit.prevent="updateProduct">
-           
+
             <div class=" flex-wrap -mx-3 mb-6">
               <div class="w-full  px-3 mb-2">
-                <label class="text-center block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                <label class="text-center block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="grid-first-name">
                   Product Image
                 </label>
                 <img class="h-24 w-1/2 mx-auto mb-4" :src="editedProduct.imageUrl">
@@ -97,6 +101,7 @@
 export default {
 
   data: () => ({
+
     products: [],
     editedProduct: {},
     originalProduct: {},
@@ -132,6 +137,15 @@ export default {
     }
   },
   methods: {
+    watcher() {
+      this.$fire.firestore.collection('products').onSnapshot((querySnapshot) => {
+        this.editedProduct = [];
+        querySnapshot.forEach((doc) => {
+          this.editedProduct.push(doc);
+        });
+      });
+
+    },
     async fetchProductAndEdit(productId) {
 
       const productRef = this.$fire.firestore.collection('products').doc(productId)
@@ -144,30 +158,35 @@ export default {
 
     },
     async updateProduct() {
-      const file = this.$refs.fileInput.files[0]
-      const storageRef = this.$fire.storage.ref()
-      const imageRef = storageRef.child(`images/${file.name}`)
-      const snapshot = await imageRef.put(file)
-      this.editedProduct.imageUrl = await snapshot.ref.getDownloadURL()
+      // const file = this.$refs.fileInput.files[0]
+      // const storageRef = this.$fire.storage.ref()
+      // const imageRef = storageRef.child(`images/${file.name}`)
+      // const snapshot = await imageRef.put(file)
+      // this.editedProduct.imageUrl = await snapshot.ref.getDownloadURL()
 
       const { id, ...updatedProduct } = this.editedProduct
       await this.$fire.firestore.collection('products').doc(id).update(updatedProduct)
-      this.showEditForm = false
-      this.$router.push('/productlist')
+      this.watcher();
+      alert('Product Updated Successfully')
+
+      // this.showEditForm = false
+      this.$router.push('/admin/productlist')
 
     },
     async deleteProduct(productId) {
       await this.$fire.firestore.collection('products').doc(productId).delete()
 
         .then(() => {
-          this.$router.push('/productlist')
+          this.watcher();
+          alert('Product Deleted Successfully')
+          this.$router.push('/admin/productlist')
+
         })
 
     },
     cancelEdit() {
       this.editedProduct = { ...this.originalProduct }
-      this.showProductList = true
-      this.showEditForm = false
+      this.$router.push('/admin/productlist')
     },
 
   }

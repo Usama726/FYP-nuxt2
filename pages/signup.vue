@@ -125,6 +125,7 @@ export default {
             email: this.email,
             firstName: this.firstName,
             lastName: this.lastName,
+            timestamp: new Date()
           })
           this.firstName = '',
             this.lastName = '',
@@ -132,7 +133,7 @@ export default {
             this.password = '',
             this.$router.push('/')
         })
-        .catch((e) => console.log(e.message))
+        .catch((e) => alert(e.message))
     },
   }
 

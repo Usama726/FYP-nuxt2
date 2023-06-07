@@ -1,7 +1,7 @@
 <template>
   <div>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="block w-full"
-        style="margin: auto; z-index: -10;" height="400" preserveAspectRatio="none" viewBox="0 0 1920 880">
+        style="margin: auto; z-index: -10;" height="450" preserveAspectRatio="none" viewBox="0 0 1920 880">
         <g transform="translate(960,440) scale(1,1) translate(-960,-440)">
           <linearGradient id="lg-0.047955344060927496" x1="0" x2="1" y1="0" y2="0">
             <stop stop-color="hsl(217, 88%, 33.7%)" offset="0"></stop>

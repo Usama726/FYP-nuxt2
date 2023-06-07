@@ -2,9 +2,7 @@
   <div class="border-t-4 mt-auto border-blue-500 rounded-xl">
     <!-- Footer section with social media icons and newsletter sign-up -->
     <footer class="text-center text-gray-800">
-      <div class="pt-6">
-
-
+      <div class="pt-2">
         <!-- Copyright information -->
         <div class="mb-2 px-8 hidden md:block">
           <p>
@@ -78,7 +76,7 @@
 
           <div class=" sm:mb-4 ">
             <ul class=" flex flex-col text-sm align-center justify-center text-center sm:mt-2">
-              <li v-for="link in links" :key="link.id" class="mt-1 sm:mb-2">
+              <li v-for="link in links" :key="link.id" class="mt-1 mb-2">
                 <NuxtLink :to="link.link"
                   class="inline-block font-bold md:text-md hover:scale-105 hover:text-blue-500 cursor-pointer">{{
                     link.name }}
