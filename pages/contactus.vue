@@ -1,5 +1,6 @@
 <template>
   <div>
+    <navbar />
     <!-- Top SVG of Page -->
     <top-svg />
     <!-- Top Banner Of Every Page -->
@@ -74,6 +75,7 @@
       <!-- Section: Design Block -->
     </div>
     <!-- Container for demo purpose -->
+    <thefooter />
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
   <div  id="nav">
-    <top-svg></top-svg>
+<navbar />
+    <top-svg />
     <div class="bg-design w-full pt-2 px-12">
 
       <div class=" mt-[-400px] max-w-2xl mx-auto">
@@ -96,6 +97,7 @@
         </div>
       </div>
     </div>
+    <thefooter />
   </div>
   <!-- <div class="login-box flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
     <div class="w-full max-w-md space-y-8">

@@ -1,9 +1,11 @@
 <template>
   <div>
+    <navbar />
    <!-- Top SVG of Page -->
    <top-svg />
     <!-- Top Banner Of Every Page -->
     <top-header>About Us</top-header>
+    <thefooter />
   </div>
 </template>
 

@@ -29,6 +29,7 @@
 
 
             <div>
+              <nuxt-link to="/cart">
               <svg class="h-9 w-9 cursor-pointer" viewBox="0 0 32 32" id="svg5" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" fill="#ffffff">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -54,6 +55,7 @@
                   </g>
                 </g>
               </svg>
+            </nuxt-link>
             </div>
             <div class="hidden md:block space-x-2" v-if="!user">
               <headerbtn>
@@ -165,6 +167,7 @@
                   </svg>
                 </a>
               </div>
+              
             </div>
           </div>
 

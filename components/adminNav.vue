@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-gray-900 ">
-    <div class=" flex flex-col p-3 w-60 h-screen bg-gray-900 dark:text-gray-100 border-r-2 border-gray-500">
+  <div class="">
+    <div class=" flex flex-col p-3 w-60 h-screen fixed dark:bg-gray-900 dark:text-gray-100 border-r-2 border-gray-500">
       <div class="space-y-3">
         <div class="flex items-center justify-between border-b-2 border-gray-500 py-3">
           <a href="/admin">Dashboard</a>

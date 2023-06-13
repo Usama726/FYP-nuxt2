@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-8 pt-36">
+  <div class="mb-8 pt-24">
     <p class="text-center text-blue-500 text-4xl font-bold animate-pulse">Product Details</p>
 
     <div class="px-8 pt-6  container mx-auto product-preview grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -11,14 +11,20 @@
         <p class="mb-2">{{ product.description }}</p>
         <p class="font-bold mb-2">{{ product.price }}</p>
         <div class="btn-align">
-          <nuxt-link to="/checkout">
-          <button class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white">ADD
+
+          <button v-if="!added" @click="addToCart"
+            class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">ADD
             TO
             CART</button>
-            </nuxt-link>
+          <nuxt-link v-else to="/checkout"
+            class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">
+            Checkout
+          </nuxt-link>
+
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -26,12 +32,25 @@
 
 export default {
   data: () => ({
-    product: {}
+    product: {},
+    cart: [],
+    added: false
   }),
   async created() {
     const doc = await this.$fire.firestore.collection('products').doc(this.$route.params.id)
       .get()
     this.product = doc.exists ? doc.data() : {}
+
+
+  },
+  methods: {
+    addToCart() {
+      this.cart.push(this.product)
+      this.$fire.firestore.collection('cart').add(this.product)
+      alert('product successfully added to cart ')
+      this.added = true
+
+    }
   }
 };
 

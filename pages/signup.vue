@@ -1,6 +1,7 @@
 
 <template>
   <div id="nav">
+    <navbar />
     <top-svg></top-svg>
     <div class="bg-design w-full pt-2 px-12">
 
@@ -102,6 +103,7 @@
         </div>
       </div>
     </div>
+    <thefooter />
   </div>
 </template>
 <script>

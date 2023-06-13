@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <navbar />
   <div class="pt-24  px-16">
     <div class="relative border-2 border-black  mb-4 p-2  container md:w-1/2 m-auto chat-window">
       <ul>
@@ -37,6 +39,8 @@
       </div>
     </div>
   </div>
+  <thefooter />
+</div>
 </template>
 
 <script>
@@ -81,7 +85,8 @@ export default {
 }
 </script>
 
-<style scoped>.chat-window {
+<style scoped>
+.chat-window {
   height: 500px;
   overflow-y: auto;
 }</style>

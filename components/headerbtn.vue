@@ -8,6 +8,7 @@
       rounded
       py-1.5
       px-2
+      btn
       
       
     "
@@ -22,4 +23,5 @@ export default {};
 </script>
 
 <style>
+
 </style>

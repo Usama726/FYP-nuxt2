@@ -76,11 +76,21 @@
 
           <div class=" sm:mb-4 ">
             <ul class=" flex flex-col text-sm align-center justify-center text-center sm:mt-2">
-              <li v-for="link in links" :key="link.id" class="mt-1 mb-2">
-                <NuxtLink :to="link.link"
-                  class="inline-block font-bold md:text-md hover:scale-105 hover:text-blue-500 cursor-pointer">{{
-                    link.name }}
-                </NuxtLink>
+              <li class="mt-1 md:mx-3 my-2 sm:mb-2">
+                <nuxt-link to="/lab-tests"
+                  class=" inline-block font-bold md:text-md hover:scale-105 hover:text-blue-500 ">Lab Tests</nuxt-link>
+              </li>
+              <li class="mt-1 md:mx-3 my-2 sm:mb-2">
+                <nuxt-link to="/compounded"
+                  class="inline-block font-bold  md:text-md hover:scale-105 hover:text-blue-500 ">Compounded</nuxt-link>
+              </li>
+              <li class="mt-1 md:mx-3 my-2 sm:mb-2">
+                <nuxt-link to="/medicines"
+                  class="inline-block font-bold  md:text-md hover:scale-105 hover:text-blue-500 ">Medicines</nuxt-link>
+              </li>
+              <li class="mt-1 md:mx-3 my-2 sm:mb-2">
+                <nuxt-link to="/consultation"
+                  class="inline-block font-bold  md:text-md hover:scale-105 hover:text-blue-500 ">Doctor Consulatation</nuxt-link>
               </li>
             </ul>
           </div>
@@ -98,18 +108,6 @@
   </div>
  
 </template>
-
-<script>
-export default {
-  props: {
-    links: {
-      type: Array,
-      required: true
-    }
-  },
-
-};
-</script>
 <style scoped>
 .logo {
   width: 10rem;

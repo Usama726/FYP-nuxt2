@@ -1,8 +1,10 @@
 <template>
+  <div class="flex bg-gray-900">
+    <admin-nav />
   <div class="container m-auto">
-    <h2 class="font-bold text-xl text-center mt-8">Users List </h2>
+    <h2 class="font-bold text-xl text-center bg-blue mt-8">Users List </h2>
     <table class="  shadow-xlg bg-white border-separate m-auto mt-4 mb-8">
-      <tr>
+      <tr class="flex flex-wrap bg-gray-900">
         <th class="bg-gray-400 border text-center px-8 py-4">User Name</th>
         <th class="bg-gray-400 border text-center px-8 py-4 ">User Email</th>
 
@@ -23,6 +25,7 @@
     </table>
 
   </div>
+</div>
 </template>
 
 <script>
