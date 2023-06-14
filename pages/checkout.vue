@@ -75,7 +75,7 @@
           <div class="pt-12 md:pt-0 2xl:ps-4">
             <h2 class="text-xl font-bold">Order Summary
             </h2>
-            <div class="mt-8">
+            <div class="mt-3">
               <div class="flex flex-col space-y-4">
                 <checkoutItem :product="product" v-for="(product, index) in cartItems" :key="index"
                   @remove="removeItem(index)" />
@@ -102,22 +102,15 @@
 
 <script>
 export default {
+
   data: () => ({
     cartItems: [],
   }),
   async created() {
-    const items = []
-    await this.$fire.firestore.collection('cart').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        items.push({
-          id: doc.id,
-          ...doc.data()
-        })
 
-      });
+    this.cartItems = JSON.parse(localStorage.getItem('products'))
 
-      this.cartItems = items
-    })
+console.log(this.cartItems)
   },
   methods: {
     removeItem(index) {

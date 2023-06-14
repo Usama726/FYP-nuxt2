@@ -13,6 +13,7 @@
 
           </tr>
           <tr v-for="(product, index) in products" :key="index">
+          
             <td class="border-2 border-blue-200 px-2 py-2 ">
               <img class="h-24 w-full" :src="product.imageUrl" />
             </td>
@@ -37,6 +38,7 @@
                   class="border px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700 font-bold ">Delete</button>
               </div>
             </td>
+         
           </tr>
         </table>
 
@@ -162,9 +164,9 @@ export default {
   methods: {
     watcher() {
       this.$fire.firestore.collection('products').onSnapshot((querySnapshot) => {
-        this.products = [];
+        this.editedProduct = [];
         querySnapshot.forEach((doc) => {
-          this.products.push(doc);
+          this.editedProduct.push(doc);
         });
       });
 
@@ -181,12 +183,6 @@ export default {
 
     },
     async updateProduct() {
-      // const file = this.$refs.fileInput.files[0]
-      // const storageRef = this.$fire.storage.ref()
-      // const imageRef = storageRef.child(`images/${file.name}`)
-      // const snapshot = await imageRef.put(file)
-      // this.editedProduct.imageUrl = await snapshot.ref.getDownloadURL()
-
       const { id, ...updatedProduct } = this.editedProduct
       await this.$fire.firestore.collection('products').doc(id).update(updatedProduct)
       .then(()=>{
@@ -194,9 +190,6 @@ export default {
         alert('Product Updated Successfully')
         this.$router.push('/admin/productlist')
       })
-
-      // this.showEditForm = false
-
     },
     async deleteProduct(productId) {
       await this.$fire.firestore.collection('products').doc(productId).delete()

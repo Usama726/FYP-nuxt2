@@ -18,7 +18,7 @@
                   Product Image
                 </label>
                 <input type="file" ref="fileInput" required
-                  class="  text-gray-300 bg-gray-900 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                  class="  text-gray-300 bg-gray-900 border border-blue-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-500">
 
               </div>
               <div class="grid grig-cols-1 md:grid-cols-2 gap-3">
@@ -49,7 +49,7 @@
                   Product Description
                 </label>
                 <textarea
-                  class="appearance-none block w-full bg-gray-900 text-gray-300 border border-blue-500 rounded py-3 px-4 leading-tight focus:outline-none focus  focus:border-gray-500"
+                  class="appearance-none block w-full h-24 bg-gray-900 text-gray-300 border border-blue-500 rounded py-3 px-4 leading-tight focus:outline-none focus  focus:border-gray-500"
                   required type="text" id="description" placeholder="Enter Product Description"
                   v-model="description"></textarea>
               </div>

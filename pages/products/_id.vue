@@ -12,7 +12,7 @@
         <p class="font-bold mb-2">{{ product.price }}</p>
         <div class="btn-align">
 
-          <button v-if="!added" @click="addToCart"
+          <button v-if="!added" @click="changeButton()"
             class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">ADD
             TO
             CART</button>
@@ -33,10 +33,11 @@
 export default {
   data: () => ({
     product: {},
-    cart: [],
+    // cart: [],
     added: false
   }),
   async created() {
+
     const doc = await this.$fire.firestore.collection('products').doc(this.$route.params.id)
       .get()
     this.product = doc.exists ? doc.data() : {}
@@ -44,14 +45,16 @@ export default {
 
   },
   methods: {
-    addToCart() {
-      this.cart.push(this.product)
-      this.$fire.firestore.collection('cart').add(this.product)
-      alert('product successfully added to cart ')
-      this.added = true
-
+    // addToCart() {
+    //   this.cart.push(this.product)
+    //   const stringArray = JSON.stringify(this.cart)
+    //   localStorage.setItem('products', stringArray)
+    // },
+    changeButton(){
+      this.added=true
     }
   }
+
 };
 
 </script>
