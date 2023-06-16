@@ -28,34 +28,35 @@
           <div class="flex gap-3">
 
 
-            <div>
-              <nuxt-link to="/cart">
-              <svg class="h-9 w-9 cursor-pointer" viewBox="0 0 32 32" id="svg5" version="1.1"
-                xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" fill="#ffffff">
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                <g id="SVGRepo_iconCarrier">
-                  <defs id="defs2"></defs>
-                  <g id="layer1" transform="translate(-12,-292)">
-                    <path
-                      d="m 21,316.00586 c -1.645008,0 -3,1.35499 -3,3 0,1.64501 1.354992,3 3,3 1.645008,0 3,-1.35499 3,-3 0,-1.64501 -1.354992,-3 -3,-3 z m 0,2 c 0.564129,0 1,0.43587 1,1 0,0.56413 -0.435871,1 -1,1 -0.564129,0 -1,-0.43587 -1,-1 0,-0.56413 0.435871,-1 1,-1 z"
-                      id="circle5400"
-                      style="color:#ffffff;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
-                    </path>
-                    <path
-                      d="m 35.999999,316.00586 c -1.645008,0 -3,1.35499 -3,3 0,1.64501 1.354992,3 3,3 1.645008,0 3,-1.35499 3,-3 0,-1.64501 -1.354992,-3 -3,-3 z m 0,2 c 0.564129,0 1,0.43587 1,1 0,0.56413 -0.435871,1 -1,1 -0.564129,0 -1,-0.43587 -1,-1 0,-0.56413 0.435871,-1 1,-1 z"
-                      id="circle5402"
-                      style="color:#ffffff;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
-                    </path>
-                    <path
-                      d="m 15,294.00586 c -0.552285,0 -1,0.44772 -1,1 0,0.55228 0.447715,1 1,1 h 1.179688 l 2.65039,13.24219 C 17.759297,309.70823 17,310.77542 17,312.00586 c 0,1.6447 1.355301,3 3,3 h 18.011718 c 0.552285,0 1,-0.44772 1,-1 0,-0.55228 -0.447715,-1 -1,-1 H 20 c -0.571296,0 -1,-0.4287 -1,-1 0,-0.5713 0.428704,-1 1,-1 h 16.011718 3 c 0.492161,2.4e-4 0.911339,-0.35764 0.988281,-0.84375 l 1.730469,-11 c 0.09599,-0.60725 -0.373487,-1.15652 -0.988281,-1.15625 H 18.619141 l -0.638672,-3.19531 C 17.887292,294.34287 17.476874,294.00603 17,294.00586 Z m 4.019531,6 h 20.552734 l -1.416016,9 L 20.820312,309 Z m 3.980469,2 c -0.552285,0 -1,0.44772 -1,1 0,0.55228 0.447715,1 1,1 h 13.011718 c 0.552285,0 1,-0.44772 1,-1 0,-0.55228 -0.447715,-1 -1,-1 z m 2,3 c -0.552285,0 -1,0.44772 -1,1 0,0.55228 0.447715,1 1,1 h 9.011718 c 0.552285,0 1,-0.44772 1,-1 0,-0.55228 -0.447715,-1 -1,-1 z"
-                      id="path5404"
-                      style="color:#ffffff;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
-                    </path>
+            <div class="relative">
+              <nuxt-link to="/checkout ">
+                <svg class="h-9 w-9 cursor-pointer " viewBox="0 0 32 32" id="svg5" version="1.1"
+                  xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" fill="#ffffff">
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <defs id="defs2"></defs>
+                    <g id="layer1" transform="translate(-12,-292)">
+                      <path
+                        d="m 21,316.00586 c -1.645008,0 -3,1.35499 -3,3 0,1.64501 1.354992,3 3,3 1.645008,0 3,-1.35499 3,-3 0,-1.64501 -1.354992,-3 -3,-3 z m 0,2 c 0.564129,0 1,0.43587 1,1 0,0.56413 -0.435871,1 -1,1 -0.564129,0 -1,-0.43587 -1,-1 0,-0.56413 0.435871,-1 1,-1 z"
+                        id="circle5400"
+                        style="color:#ffffff;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                      </path>
+                      <path
+                        d="m 35.999999,316.00586 c -1.645008,0 -3,1.35499 -3,3 0,1.64501 1.354992,3 3,3 1.645008,0 3,-1.35499 3,-3 0,-1.64501 -1.354992,-3 -3,-3 z m 0,2 c 0.564129,0 1,0.43587 1,1 0,0.56413 -0.435871,1 -1,1 -0.564129,0 -1,-0.43587 -1,-1 0,-0.56413 0.435871,-1 1,-1 z"
+                        id="circle5402"
+                        style="color:#ffffff;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                      </path>
+                      <path
+                        d="m 15,294.00586 c -0.552285,0 -1,0.44772 -1,1 0,0.55228 0.447715,1 1,1 h 1.179688 l 2.65039,13.24219 C 17.759297,309.70823 17,310.77542 17,312.00586 c 0,1.6447 1.355301,3 3,3 h 18.011718 c 0.552285,0 1,-0.44772 1,-1 0,-0.55228 -0.447715,-1 -1,-1 H 20 c -0.571296,0 -1,-0.4287 -1,-1 0,-0.5713 0.428704,-1 1,-1 h 16.011718 3 c 0.492161,2.4e-4 0.911339,-0.35764 0.988281,-0.84375 l 1.730469,-11 c 0.09599,-0.60725 -0.373487,-1.15652 -0.988281,-1.15625 H 18.619141 l -0.638672,-3.19531 C 17.887292,294.34287 17.476874,294.00603 17,294.00586 Z m 4.019531,6 h 20.552734 l -1.416016,9 L 20.820312,309 Z m 3.980469,2 c -0.552285,0 -1,0.44772 -1,1 0,0.55228 0.447715,1 1,1 h 13.011718 c 0.552285,0 1,-0.44772 1,-1 0,-0.55228 -0.447715,-1 -1,-1 z m 2,3 c -0.552285,0 -1,0.44772 -1,1 0,0.55228 0.447715,1 1,1 h 9.011718 c 0.552285,0 1,-0.44772 1,-1 0,-0.55228 -0.447715,-1 -1,-1 z"
+                        id="path5404"
+                        style="color:#ffffff;fill:#ffffff;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.1;-inkscape-stroke:none">
+                      </path>
+                    </g>
                   </g>
-                </g>
-              </svg>
-            </nuxt-link>
+                </svg>
+                <!-- <p class="absolute top-0 left-4 text-white font-bold bg-red-500 px-1 rounded-full">{{ cart.length }}</p> -->
+              </nuxt-link>
             </div>
             <div class="hidden md:block space-x-2" v-if="!user">
               <headerbtn>
@@ -82,10 +83,6 @@
 
           </div>
         </div>
-
-
-
-
 
 
         <!-- Dark Background Transition -->
@@ -118,10 +115,14 @@
 
           <ul
             class="container mx-auto p-5 uppercase divide-y text-md font-bold md:text-xl flex flex-col align-center justify-center">
-            <li><nuxt-link to="/" @click="isOpen = false" class="my-4 block text-center hover:scale-110 ">Home</nuxt-link></li>
-            <li><nuxt-link to="/aboutus" @click="isOpen = false" class="my-4 block text-center hover:scale-110">About</nuxt-link></li>
-            <li><nuxt-link to="/medicines" @click="isOpen = false" class="my-4 block text-center hover:scale-110">Medicines</nuxt-link></li>
-            <li><nuxt-link to="/contactus" @click="drawer" class="my-4 block text-center hover:scale-110">Contact</nuxt-link></li>
+            <li><nuxt-link to="/" @click="isOpen = false" class="my-4 block text-center hover:scale-110 ">Home</nuxt-link>
+            </li>
+            <li><nuxt-link to="/aboutus" @click="isOpen = false"
+                class="my-4 block text-center hover:scale-110">About</nuxt-link></li>
+            <li><nuxt-link to="/medicines" @click="isOpen = false"
+                class="my-4 block text-center hover:scale-110">Medicines</nuxt-link></li>
+            <li><nuxt-link to="/contactus" @click="drawer"
+                class="my-4 block text-center hover:scale-110">Contact</nuxt-link></li>
             <li v-if="!user" class="flex justify-center gap-3">
               <nuxt-link to="/login" @click="isOpen = false"
                 class="my-5  text-center font-semibold cta inline-block text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-2 rounded hover:text-white">Login</nuxt-link>
@@ -131,7 +132,8 @@
             </li>
             <li v-else class="flex justify-center ">
               <button @click="logoutbtn"
-                class="my-5 text-center font-semibold cta inline-block text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-2 rounded hover:text-white">Sign Out
+                class="my-5 text-center font-semibold cta inline-block text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-2 rounded hover:text-white">Sign
+                Out
               </button>
             </li>
           </ul>
@@ -167,7 +169,7 @@
                   </svg>
                 </a>
               </div>
-              
+
             </div>
           </div>
 
@@ -186,9 +188,13 @@ export default {
   data() {
     return {
       user: '',
-      isOpen: false
+      isOpen: false,
+      // cart: [],
     };
   },
+  // created() {
+  //   this.cart = JSON.parse(localStorage.getItem("cart_storage") || '[]')
+  // },
   methods: {
     drawer() {
       this.isOpen = !this.isOpen;
@@ -212,7 +218,8 @@ export default {
         }
       }
     }
-  },        
+
+  },
   mounted() {
     document.addEventListener("keydown", e => {
       if (e.keyCode == 27 && this.isOpen)
@@ -222,6 +229,7 @@ export default {
       this.user = user;
     });
   },
+
 
 };
 </script>
@@ -236,77 +244,4 @@ export default {
   background-image: linear-gradient(to right, hsl(217, 88%, 33.7%), hsl(217, 88%, 75.1%));
 }
 </style> 
-
-
-<!-- <div class="w-full z-40
-        text-white
-        bg-gray-600
-        px-6
-        py-2          
-        md:flex
-        justify-between
-        items-center">
-    <div class="logo">
-      <NuxtLink to="/">
-        <img class="logo-img" src="~/assets/images/logo.png" alt="logo">
-      </NuxtLink>
-    </div>
-    <ul class="flex text-lg items-center font-bold sm:mt-2">
-      <li v-for="link in links" :key="link.id" class=" md:mx-3 my-2 sm:mb-2">
-        <NuxtLink :to="link.link" class=" hover:text-gray-300">{{ link.name }}
-        </NuxtLink>
-      </li>
-
-      <headerbtn v-if="!user">
-        <NuxtLink :to="login.link">{{ login.name }}</NuxtLink>
-      </headerbtn>
-      <headerbtn v-if="!user">
-        <NuxtLink :to="signup.link">{{ signup.name }}</NuxtLink>
-      </headerbtn>
-      <headerbtn v-if="user">
-        <button  @click="logoutbtn">{{ signout.name }}</button>
-      </headerbtn>
-
-
-    </ul>
-
-
-  </div> -->
-
-
-<!-- <script>
-export default {
-  props: {
-    links: {
-      type: Array,
-      required: true
-    }
-  },
-
-  data: () => ({
-    user: '',
-    login: { name: "Login", link: "login" },
-    signup: { name: "SignUp", link: "signup" },
-    signout: { name: "LogOut" },
-
-  }),
-
-  mounted() {
-    this.$fire.auth.onAuthStateChanged(user => {
-      this.user = user
-    })
-  },
-  methods: {
-    logoutbtn() {
-      this.$fire.auth.signOut()
-      this.user = ''
-      this.$router.push('/medicines')
-    }
-  }
-};
-</script> 
--->
-
-
-
  

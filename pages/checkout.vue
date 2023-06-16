@@ -1,5 +1,6 @@
 <template>
   <div>
+    <navbar />
     <div class="pt-24 text-center">
       <h1 class="animate-pulse flex items-center justify-center font-bold text-blue-600 text-3xl lg:text-5xl mb-3">
         Checkout
@@ -65,24 +66,46 @@
                   class="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                   rows="4" placeholder="Notes for delivery"></textarea>
               </div>
-              <div class="mt-4">
-                <button class="w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900">Process</button>
+              <div class="mt-4 flex gap-4">
+                <button v-if="user" class="flex-1 px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg">Proceed To Checkout</button>
+                <nuxt-link v-else to="/signup" class="flex-1 px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg text-center"> Sign Up</nuxt-link>
+                <nuxt-link to="/medicines" class=" px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg">Continue Shopping</nuxt-link>
               </div>
             </div>
           </form>
         </div>
+
+        <!-- Cart component -->
+
+
         <div class="flex flex-col w-full ml-6 lg:ml-12 lg:w-2/5">
           <div class="pt-12 md:pt-0 2xl:ps-4">
-            <h2 class="text-xl font-bold">Order Summary
+            <h2 class="text-xl font-bold text-center">Your Bag
             </h2>
             <div class="mt-3">
               <div class="flex flex-col space-y-4">
-                <checkoutItem :product="product" v-for="(product, index) in cartItems" :key="index"
-                  @remove="removeItem(index)" />
+                <div v-for="(product, index) in cartItems" :key="index" class="flex items-center space-x-4 border-2 border-blue-400 rounded-lg pr-2">
+                  <div class="w-36 h-36">
+                    <img :src="product.imageUrl">
+                  </div>
+                  <div>
+                    <h2 class="text-md font-bold mb-3">{{ product.name }}</h2>
+
+                    <span class="text-black "> PKR {{ product.price }} .00</span>
+                  </div>
+                  <div>
+                    <button @click="removeItem">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="flex p-4 mt-4">
-              <h2 class="text-xl font-bold">Total Items {{ cartItems.length }} </h2>
+              <h2 class="text-xl font-bold">Total Items {{ cartItems.length }}</h2>
             </div>
             <div
               class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
@@ -101,20 +124,25 @@
 </template>
 
 <script>
+
+
 export default {
 
   data: () => ({
     cartItems: [],
+    user:''
   }),
   async created() {
+    this.user = this.$fire.auth.currentUser
+    this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
 
-    this.cartItems = JSON.parse(localStorage.getItem('products'))
-
-console.log(this.cartItems)
+    console.log(this.cartItems)
   },
   methods: {
     removeItem(index) {
       this.cartItems.splice(index, 1)
+      localStorage.setItem("cart_storage", JSON.stringify(this.cartItems))
+
     }
   }
 

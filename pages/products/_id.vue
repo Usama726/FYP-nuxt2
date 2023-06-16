@@ -1,4 +1,6 @@
 <template>
+  <div>
+    <navbar />
   <div class="mb-8 pt-24">
     <p class="text-center text-blue-500 text-4xl font-bold animate-pulse">Product Details</p>
 
@@ -12,28 +14,35 @@
         <p class="font-bold mb-2">{{ product.price }}</p>
         <div class="btn-align">
 
-          <button v-if="!added" @click="changeButton()"
+          <button v-if="!added" @click="addToCart"
             class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">ADD
             TO
             CART</button>
-          <nuxt-link v-else to="/checkout"
-            class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">
-            Checkout
-          </nuxt-link>
+
+            <div v-else class="flex items-center justify-between ">
+              <nuxt-link to="/checkout"
+                class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">
+                Checkout
+              </nuxt-link>
+              <nuxt-link to="/medicines" class="underline text-blue-700 text-xl text-center">&larr; Continue Shopping</nuxt-link>
+            </div>
 
         </div>
       </div>
     </div>
 
   </div>
+</div>
 </template>
 
 <script>
 
+
 export default {
+
   data: () => ({
     product: {},
-    // cart: [],
+    cart: [],
     added: false
   }),
   async created() {
@@ -42,17 +51,18 @@ export default {
       .get()
     this.product = doc.exists ? doc.data() : {}
 
+    this.cart = JSON.parse(localStorage.getItem("cart_storage") || '[]')
 
   },
+  
   methods: {
-    // addToCart() {
-    //   this.cart.push(this.product)
-    //   const stringArray = JSON.stringify(this.cart)
-    //   localStorage.setItem('products', stringArray)
-    // },
-    changeButton(){
-      this.added=true
-    }
+    addToCart() {
+      this.cart.push(this.product)
+      localStorage.setItem("cart_storage", JSON.stringify(this.cart))
+      this.added = true
+
+    },
+   
   }
 
 };

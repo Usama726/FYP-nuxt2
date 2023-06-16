@@ -9,7 +9,7 @@
           <p >{{ product.name }}</p>
           <p class="font-bold my-3">Rs {{product.price}}.00</p>
           <div>
-            <button @click="$emit(addToCart)" class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 w-full rounded-full hover:text-white">ADD
+            <button class="text-white bg-blue-500 hover:bg-blue-600 px-3 py-2 w-full rounded-full hover:text-white">ADD
               TO CART</button>
           </div>
         </div>
