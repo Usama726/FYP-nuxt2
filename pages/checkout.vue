@@ -67,9 +67,15 @@
                   rows="4" placeholder="Notes for delivery"></textarea>
               </div>
               <div class="mt-4 flex gap-4">
-                <button v-if="user" class="flex-1 px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg">Proceed To Checkout</button>
-                <nuxt-link v-else to="/signup" class="flex-1 px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg text-center"> Sign Up</nuxt-link>
-                <nuxt-link to="/medicines" class=" px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg">Continue Shopping</nuxt-link>
+                <button v-if="user"
+                  class="flex-1 px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg">Proceed
+                  To Checkout</button>
+                <nuxt-link v-else to="/signup"
+                  class="flex-1 px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg text-center">
+                  Sign Up</nuxt-link>
+                <nuxt-link to="/medicines"
+                  class=" px-6 py-2 text-white bg-blue-500  hover:bg-blue-600 font-bold text-lg rounded-lg">Continue
+                  Shopping</nuxt-link>
               </div>
             </div>
           </form>
@@ -82,11 +88,12 @@
           <div class="pt-12 md:pt-0 2xl:ps-4">
             <h2 class="text-xl font-bold text-center">Your Bag
             </h2>
-            <div class="mt-3">
+            <div class="mt-4">
               <div class="flex flex-col space-y-4">
-                <div v-for="(product, index) in cartItems" :key="index" class="flex items-center space-x-4 border-2 border-blue-400 rounded-lg pr-2">
+                <div v-for="(product, index) in cartItems" :key="index"
+                  class="flex items-center space-x-4 border-2 border-blue-400 rounded-lg pr-2">
                   <div class="w-36 h-36">
-                    <img :src="product.imageUrl">
+                    <img class="overflow:hidden" :src="product.imageUrl">
                   </div>
                   <div>
                     <h2 class="text-md font-bold mb-3">{{ product.name }}</h2>
@@ -105,7 +112,7 @@
               </div>
             </div>
             <div class="flex p-4 mt-4">
-              <h2 class="text-xl font-bold">Total Items {{ cartItems.length }}</h2>
+              <h2 class="text-xl font-bold">Total Items in Cart :  {{ cartItems.length }}</h2>
             </div>
             <div
               class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
@@ -130,13 +137,14 @@ export default {
 
   data: () => ({
     cartItems: [],
-    user:''
+    user: ''
   }),
   async created() {
     this.user = this.$fire.auth.currentUser
     this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
-
-    console.log(this.cartItems)
+  },
+  async mounted() {
+    this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
   },
   methods: {
     removeItem(index) {

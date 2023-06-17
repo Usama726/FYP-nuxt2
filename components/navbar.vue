@@ -173,39 +173,56 @@
 
     <div v-if="modalIsOpen"
       class="fixed top-0 right-0 z-40 flex items-end justify-end w-full h-screen mr-auto transition-opacity bg-black bg-opacity-50 sm:block">
-      <div
-        class="relative flex items-center justify-center w-full h-full ml-auto bg-white rounded-md md:w-5/12 xl:w-3/12">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-          class="absolute w-6 h-6 cursor-pointer top-2 right-2" @click="modalIsOpen = false">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-        <div v-for="(product, index) in cart" :key="index"
-          class="flex items-center pr-2 space-x-4 border-2 border-blue-400 rounded-lg">
-          <div class="w-36 h-36">
-            <img :src="product.imageUrl">
-          </div>
-          <div>
-            <h2 class="mb-3 font-bold text-md">{{ product.name }}</h2>
-
-            <span class="text-black "> PKR {{ product.price }} .00</span>
-          </div>
-          <div>
-            <button @click="removeItem">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+      <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-3/12 xl:w-5/12">
+        <div class="flex justify-between items-center p-6">
+          <h1 class="text-xl font-bold text-blue-500">Your Bag</h1>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class=" w-6 h-6 cursor-pointer  " @click="modalIsOpen = false">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </div>
+        <div class="w-[90%] mx-auto mb-3">
+          <div v-for="(product, index) in cart" :key="index"
+            class="flex items-center justify-between pr-3 border-2 border-blue-400 rounded-lg mb-3">
+            <div class="flex items-center pr-2 space-x-4">
+              <div class="w-36 h-36">
+                <img :src="product.imageUrl">
+              </div>
+              <div>
+                <h2 class="mb-3 font-bold text-md">{{ product.name }}</h2>
 
+                <span class="text-black "> PKR {{ product.price }} .00</span>
+              </div>
+            </div>
+            <div>
+              <button @click="removeItem">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="flex p-4 mt-4">
+            <h2 class="text-xl font-bold">Total Items in Cart : {{ cart.length }}</h2>
+          </div>
+          <div
+            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Subtotal<span class="ml-2">`$40.00 * `</span></div>
+          <div
+            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Fix Shipping<span class="ml-2">$10</span></div>
+          <div
+            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Total<span class="ml-2">$50.00</span></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import Headerbtn from './headerbtn.vue';
+import headerbtn from './headerbtn.vue';
 export default {
   data() {
     return {
@@ -215,9 +232,7 @@ export default {
       modalIsOpen: false
     };
   },
-  async created() {
-    this.cart = await JSON.parse(localStorage.getItem("cart_storage"))
-  },
+
   methods: {
     drawer() {
       this.isOpen = !this.isOpen;
@@ -244,11 +259,11 @@ export default {
           else
             document.body.style.removeProperty("overflow");
         }
-      }
-    }
+      },
+    },
 
   },
-  mounted() {
+  async mounted() {
     document.addEventListener("keydown", e => {
       if (e.keyCode == 27 && this.isOpen)
         this.isOpen = false;
@@ -256,6 +271,11 @@ export default {
     this.$fire.auth.onAuthStateChanged(user => {
       this.user = user;
     });
+
+    this.cart = await JSON.parse(localStorage.getItem("cart_storage"))
+
+    localStorage.setItem("cart_storage", JSON.stringify(this.cart))
+
   },
 
 

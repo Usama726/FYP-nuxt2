@@ -13,11 +13,10 @@
 </template>
 
 <script>
-
-import TheProduct from '../components/theProduct.vue';
+import theProduct from '../components/theProduct.vue';
 
 export default {
-  components: { TheProduct },
+  components: { theProduct },
   data: () => ({
     products: [],
     cart: [],

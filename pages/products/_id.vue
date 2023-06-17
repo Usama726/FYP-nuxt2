@@ -51,8 +51,10 @@ export default {
       .get()
     this.product = doc.exists ? doc.data() : {}
 
+    
+  },
+  async mounted(){
     this.cart = JSON.parse(localStorage.getItem("cart_storage") || '[]')
-
   },
   
   methods: {
