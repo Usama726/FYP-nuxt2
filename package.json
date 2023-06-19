@@ -17,8 +17,7 @@
     "tw-elements": "^1.0.0-beta2",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10",
-    "vuex": "^4.1.0"
+    "vue-template-compiler": "^2.7.10"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",

@@ -3,7 +3,7 @@
   <!-- Main navigation container -->
   <div>
     <nav class="fixed z-40 w-full h-16 px-5 py-3 nav-bg">
-      <div>
+      <div class="w-11/12 mx-auto">
         <!-- navbar -->
         <div class="flex justify-between w-full align-middle ">
           <!-- Header logo -->
@@ -174,16 +174,16 @@
     <div v-if="modalIsOpen"
       class="fixed top-0 right-0 z-40 flex items-end justify-end w-full h-screen mr-auto transition-opacity bg-black bg-opacity-50 sm:block">
       <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-3/12 xl:w-5/12">
-        <div class="flex justify-between items-center p-6">
+        <div class="flex items-center justify-between p-6">
           <h1 class="text-xl font-bold text-blue-500">Your Bag</h1>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class=" w-6 h-6 cursor-pointer  " @click="modalIsOpen = false">
+            class="w-6 h-6 cursor-pointer " @click="modalIsOpen = false">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </div>
         <div class="w-[90%] mx-auto mb-3">
           <div v-for="(product, index) in cart" :key="index"
-            class="flex items-center justify-between pr-3 border-2 border-blue-400 rounded-lg mb-3">
+            class="flex items-center justify-between pr-3 mb-3 border-2 border-blue-400 rounded-lg">
             <div class="flex items-center pr-2 space-x-4">
               <div class="w-36 h-36">
                 <img :src="product.imageUrl">

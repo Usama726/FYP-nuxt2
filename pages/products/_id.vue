@@ -71,9 +71,9 @@ export default {
 };
 
 </script>
-<script setup>
+<!-- <script setup>
 import { onMounted } from 'vue';
 onMounted(() => {
   cart = JSON.parse(localStorage.getItem("cart_storage") || '[]')
 })
-</script>
+</script> -->
