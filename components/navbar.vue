@@ -8,7 +8,7 @@
         <div class="flex justify-between w-full align-middle ">
           <!-- Header logo -->
           <div>
-            <nuxt-link to="/"><img src="~assets/images/logo.png" class="logo-img"></nuxt-link>
+            <nuxt-link to="/"><img src="assets/images/logo.png" class="logo-img"></nuxt-link>
           </div>
           <!-- Navbar -->
           <div class="hidden md:block">
