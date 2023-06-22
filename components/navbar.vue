@@ -93,7 +93,7 @@
 
           <div class="flex justify-between px-3 py-2 align-middle nav-bg">
             <div>
-              <img src="~assets/images/logo.png" class="logo-img">
+              <img src="assets/images/logo.png" class="logo-img">
             </div>
             <div class="close">
               <button @click="isOpen = false">
