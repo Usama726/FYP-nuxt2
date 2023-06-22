@@ -8,7 +8,7 @@
         <div class="flex justify-between w-full align-middle ">
           <!-- Header logo -->
           <div>
-            <nuxt-link to="/"><img src="assets/images/logo.png" class="logo-img"></nuxt-link>
+            <nuxt-link to="/"><img src="~/assets/images/logo.png" class="logo-img"></nuxt-link>
           </div>
           <!-- Navbar -->
           <div class="hidden md:block">
@@ -93,7 +93,7 @@
 
           <div class="flex justify-between px-3 py-2 align-middle nav-bg">
             <div>
-              <img src="assets/images/logo.png" class="logo-img">
+              <img src="~/assets/images/logo.png" class="logo-img">
             </div>
             <div class="close">
               <button @click="isOpen = false">
