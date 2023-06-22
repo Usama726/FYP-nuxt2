@@ -49,7 +49,7 @@
                   </g>
                 </svg>
                 <p class="absolute top-0 px-1 text-sm font-bold text-white bg-red-500 rounded-full left-5">{{
-                  cart.length
+                  cart
                 }}</p>
               </button>
             </div>
@@ -204,7 +204,7 @@
             </div>
           </div>
           <div class="flex p-4 mt-4">
-            <h2 class="text-xl font-bold">Total Items in Cart : {{ cart.length }}</h2>
+            <h2 class="text-xl font-bold">Total Items in Cart : {{ cart }}</h2>
           </div>
           <div
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
