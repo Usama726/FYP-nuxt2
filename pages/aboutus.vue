@@ -1,10 +1,10 @@
 <template>
   <div>
     <navbar />
-   <!-- Top SVG of Page -->
-   <top-svg />
+    <!-- Top SVG of Page -->
+    <top-svg />
     <!-- Top Banner Of Every Page -->
-    <top-header>About Us</top-header>
+    <top-header class="mb-64">About Us</top-header>
     <thefooter />
   </div>
 </template>
