@@ -1,38 +1,39 @@
 <template>
   <div>
     <navbar />
-  <div class="mb-8 pt-24">
-    <p class="text-center text-blue-500 text-4xl font-bold animate-pulse">Product Details</p>
+    <div class="pt-24 mb-8">
+      <p class="text-4xl font-bold text-center text-blue-500 animate-pulse">Product Details</p>
 
-    <div class="px-8 pt-6  container mx-auto product-preview grid grid-cols-1 md:grid-cols-2 gap-5">
-      <div class="img-section border-2 border-black h-2/4 w-full ">
-        <img class="h-full w-full" :src="product.imageUrl">
-      </div>
-      <div class=" p-5 product-details border-2 border-black h-screen">
-        <h1 class="text-sm md:text-lg font-bold">{{ product.name }}</h1>
-        <p class="mb-2">{{ product.description }}</p>
-        <p class="font-bold mb-2">{{ product.price }}</p>
-        <div class="btn-align">
+      <div class="container grid grid-cols-1 gap-5 px-8 pt-6 mx-auto product-preview md:grid-cols-2">
+        <div class="w-full border-2 border-black img-section h-2/4 ">
+          <img class="w-full h-full" :src="product.imageUrl">
+        </div>
+        <div class="h-screen p-5 border-2 border-black product-details">
+          <h1 class="text-sm font-bold md:text-lg">{{ product.name }}</h1>
+          <p class="mb-2">{{ product.description }}</p>
+          <p class="mb-2 font-bold">{{ product.price }}</p>
+          <div class="btn-align">
 
-          <button v-if="!added" @click="addToCart"
-            class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">ADD
-            TO
-            CART</button>
+            <button v-if="!added" @click="addToCart"
+              class="px-3 py-1 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">ADD
+              TO
+              CART</button>
 
             <div v-else class="flex items-center justify-between ">
               <nuxt-link to="/checkout"
-                class="text-blue-600 border-2 border-blue-500 hover:bg-blue-600 px-3 py-1 rounded hover:text-white text-xl font-bold">
+                class="px-3 py-1 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">
                 Checkout
               </nuxt-link>
-              <nuxt-link to="/medicines" class="underline text-blue-700 text-xl text-center">&larr; Continue Shopping</nuxt-link>
+              <nuxt-link to="/medicines" class="text-xl text-center text-blue-700 underline">&larr; Continue
+                Shopping</nuxt-link>
             </div>
 
+          </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -51,12 +52,12 @@ export default {
       .get()
     this.product = doc.exists ? doc.data() : {}
 
-    
+
   },
-  async mounted(){
-    this.cart = JSON.parse(localStorage.getItem("cart_storage") || '[]')
+  mounted() {
+
   },
-  
+
   methods: {
     addToCart() {
       this.cart.push(this.product)
@@ -64,9 +65,15 @@ export default {
       this.added = true
 
     },
-   
+
   }
 
 };
 
 </script>
+<!-- <script setup>
+import { onMounted } from 'vue';
+onMounted(() => {
+  cart = JSON.parse(localStorage.getItem("cart_storage") || '[]')
+})
+</script> -->

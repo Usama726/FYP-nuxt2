@@ -1,30 +1,24 @@
+export const state = () => ({
+  counter: 2,
+});
 
-// export const getters = {
-//   isAuthenticated(state) {
-//     return state.auth.loggedIn
-//   },
+export const getters = {
+  getCounter(state) {
+    return state.counter;
+  },
+};
 
-//   loggedInUser(state) {
-//     return state.auth.user
-//   }
-// }
+export const mutations = {
+  increment(state) {
+    state.counter++;
+  },
+};
 
-import Vuex from 'vuex'
-
-const store = () => {
-  return new Vuex.Store({
-    state: {},
-    mutations: {},
-    actions: {},
-    getters: {
-      isAuthenticated(state) {
-        return state.auth.loggedIn
-      },
-    
-      loggedInUser(state) {
-        return state.auth.user
-      }
-    }
-  })
-}
-export default store
+export const actions = {
+  async fetchCounter({ state }) {
+    // make request
+    const res = { data: 10 };
+    state.counter = res.data;
+    return res.data;
+  },
+};

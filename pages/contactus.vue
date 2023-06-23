@@ -7,7 +7,7 @@
     <top-header>Contact Us</top-header>
     <!-- Conatct Form -->
     <!-- Container for demo purpose -->
-    <div class="mt-48 container my-24 mx-auto md:px-6">
+    <div class="container mx-auto mt-48 mb-64 md:px-6">
       <!-- Section: Design Block -->
       <section class="mt-24 ">
         <div class="py-12 md:px-12">
@@ -15,45 +15,43 @@
             <div class="grid items-center lg:grid-cols-2">
               <div class="mb-12 md:mt-12 lg:mt-0 lg:mb-0">
                 <div class="relative z-[10] block rounded-lg bg-white px-6 py-12 md:px-12 lg:-mr-14 shadow-lg">
-                  <h2 class="bg-blue-500 animate-pulse rounded-lg p-2 mb-12 text-3xl font-bold text-center text-white">Contact us</h2>
+                  <h2 class="p-2 mb-12 text-3xl font-bold text-center text-white bg-blue-500 rounded-lg animate-pulse">
+                    Contact us</h2>
                   <form>
                     <div class="mb-8">
-                      <label  class="block text-gray-700 text-sm font-bold mb-2">
+                      <label class="block mb-2 text-sm font-bold text-gray-700">
                         <span class="text-red-500">&nbsp;*</span>
-                      Full Name
+                        Full Name
                       </label>
                       <div class="mt-1 rounded-md shadow-sm">
 
-                        <input type="text" placeholder="Enter Your Full Name"
-                          required
-                          class="block pr-10 shadow appearance-none border-2 border-blue-200 rounded w-full py-2 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-600 transition duration-500 ease-in-out">
+                        <input type="text" placeholder="Enter Your Full Name" required
+                          class="block w-full px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600">
                       </div>
                     </div>
                     <div class="mb-8">
-                      <label  class="block text-gray-700 text-sm font-bold mb-2">
+                      <label class="block mb-2 text-sm font-bold text-gray-700">
                         <span class="text-red-500">&nbsp;*</span>
-                      Email Address
+                        Email Address
                       </label>
                       <div class="mt-1 rounded-md shadow-sm">
 
-                        <input type="email" placeholder="Enter Your Email"
-                          required
-                          class="block pr-10 shadow appearance-none border-2 border-blue-200 rounded w-full py-2 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-600 transition duration-500 ease-in-out">
+                        <input type="email" placeholder="Enter Your Email" required
+                          class="block w-full px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600">
                       </div>
                     </div>
                     <div class="mb-8">
-                      <label  class="block text-gray-700 text-sm font-bold mb-2">
+                      <label class="block mb-2 text-sm font-bold text-gray-700">
                         <span class="text-red-500">&nbsp;*</span>
-                      Message
+                        Message
                       </label>
                       <div class="mt-1 rounded-md shadow-sm">
 
-                        <textarea type="text" placeholder="Enter Your Message"
-                          required
-                          class="block pr-10 shadow appearance-none border-2 border-blue-200 rounded w-full h-24 py-2 px-4 text-gray-700 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-blue-600 transition duration-500 ease-in-out"></textarea>
+                        <textarea type="text" placeholder="Enter Your Message" required
+                          class="block w-full h-24 px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600"></textarea>
                       </div>
                     </div>
-                    
+
                     <button type="button" data-te-ripple-init data-te-ripple-color="light"
                       class="block rounded border border-blue-500 px-6 pt-2.5 pb-2 text-md font-bold uppercase leading-normal text-blue-500 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:text-white ">
                       Send
@@ -65,7 +63,7 @@
                 <div class="relative  h-[700px] rounded-lg shadow-lg dark:shadow-black/20">
                   <img
                     src="https://static.vecteezy.com/system/resources/thumbnails/007/067/602/small/businessman-shows-outstretched-hand-with-social-icon-on-virtual-screen-contact-us-free-photo.jpg"
-                    class="absolute left-0 top-0 h-full w-full rounded-lg" frameborder="0" allowfullscreen>
+                    class="absolute top-0 left-0 w-full h-full rounded-lg" frameborder="0" allowfullscreen>
                 </div>
               </div>
             </div>
