@@ -112,7 +112,7 @@
               </div>
             </div>
             <div class="flex p-4 mt-4">
-              <h2 class="text-xl font-bold">Total Items in Cart :  {{ cartItems.length }}</h2>
+              <h2 class="text-xl font-bold">Total Items in Cart : {{ cartItems.length }}</h2>
             </div>
             <div
               class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
@@ -141,7 +141,7 @@ export default {
   }),
   async created() {
     this.user = this.$fire.auth.currentUser
-    this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
+
   },
   async mounted() {
     this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
