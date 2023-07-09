@@ -1,24 +1,18 @@
-export const state = () => ({
-  counter: 2,
-});
+// export const state = () => ({
+//   list: []
+// })
 
-export const getters = {
-  getCounter(state) {
-    return state.counter;
-  },
-};
-
-export const mutations = {
-  increment(state) {
-    state.counter++;
-  },
-};
-
-export const actions = {
-  async fetchCounter({ state }) {
-    // make request
-    const res = { data: 10 };
-    state.counter = res.data;
-    return res.data;
-  },
-};
+// export const mutations = {
+//   add(state, text) {
+//     state.list.push({
+//       text,
+//       done: false
+//     })
+//   },
+//   remove(state, { todo }) {
+//     state.list.splice(state.list.indexOf(todo), 1)
+//   },
+//   toggle(state, todo) {
+//     todo.done = !todo.done
+//   }
+// }

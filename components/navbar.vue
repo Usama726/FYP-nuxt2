@@ -49,7 +49,7 @@
                   </g>
                 </svg>
                 <p class="absolute top-0 px-1 text-sm font-bold text-white bg-red-500 rounded-full left-5">{{
-                  cart
+                  cart.length
                 }}</p>
               </button>
             </div>
@@ -173,7 +173,7 @@
 
     <div v-if="modalIsOpen"
       class="fixed top-0 right-0 z-40 flex items-end justify-end w-full h-screen mr-auto transition-opacity bg-black bg-opacity-50 sm:block">
-      <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-3/12 xl:w-5/12">
+      <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-4/12 xl:w-5/12">
         <div class="flex items-center justify-between p-6">
           <h1 class="text-xl font-bold text-blue-500">Your Bag</h1>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -195,7 +195,7 @@
               </div>
             </div>
             <div>
-              <button @click="removeItem" class="bg-gray-300 p-2 font-bold rounded-large">
+              <button @click="removeItem" class="border-2 border-gray-600 p-2 font-bold rounded-large">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -205,7 +205,7 @@
             </div>
           </div>
           <div class="flex p-4 mt-4">
-            <h2 class="text-xl font-bold">Total Items in Cart : {{ cart }}</h2>
+            <h2 class="text-xl font-bold">Total Items in Cart : {{ cart.length }}</h2>
           </div>
           <div
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">

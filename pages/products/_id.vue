@@ -37,7 +37,7 @@
 </template>
 
 <script>
-
+import { mapActions } from 'vuex'
 
 export default {
 
@@ -60,14 +60,13 @@ export default {
 
   methods: {
     addToCart() {
-      this.cart.push(this.product)
-      localStorage.setItem("cart_storage", JSON.stringify(this.cart))
-      this.added = true
+      this.$store.dispatch('cart/addToCart', this.product)
+    }
 
-    },
+    // ...mapMutations(['add']),
+    // ...mapActions('cart', ['addToCart'])
 
   }
-
 };
 
 </script>

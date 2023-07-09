@@ -101,7 +101,7 @@
                     <span class="text-black "> PKR {{ product.price }} .00</span>
                   </div>
                   <div>
-                    <button @click="removeItem">
+                    <button @click="removeFromCart(product)">
                       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -136,20 +136,26 @@
 export default {
 
   data: () => ({
-    cartItems: [],
+    // cartItems: [],
     user: ''
   }),
+  computed: {
+    cartItems() {
+      return this.$store.state.cart.cartItems
+    }
+  },
   async created() {
     this.user = this.$fire.auth.currentUser
 
   },
   async mounted() {
-    this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
+    // this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
   },
   methods: {
-    removeItem(index) {
-      this.cartItems.splice(index, 1)
-      localStorage.setItem("cart_storage", JSON.stringify(this.cartItems))
+    removeFromCart(product) {
+      this.$store.dispatch('cart/removeFromCart', product)
+      // this.cartItems.splice(product, 1)
+      // localStorage.setItem("cart_storage", JSON.stringify(this.cartItems))
 
     }
   }
