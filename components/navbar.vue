@@ -49,7 +49,7 @@
                   </g>
                 </svg>
                 <p class="absolute top-0 px-1 text-sm font-bold text-white bg-red-500 rounded-full left-5">{{
-                  cart.length
+                  getCartItems.length
                 }}</p>
               </button>
             </div>
@@ -195,7 +195,7 @@
               </div>
             </div>
             <div>
-              <button @click="removeItem" class="border-2 border-gray-600 p-2 font-bold rounded-large">
+              <button @click="removeFromCart(product)" class="border-2 border-gray-600 p-2 font-bold rounded-large">
                 <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -223,6 +223,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import headerbtn from './headerbtn.vue';
 export default {
   data() {
@@ -233,7 +235,23 @@ export default {
       modalIsOpen: false
     };
   },
+  mounted() {
+    document.addEventListener("keydown", e => {
+      if (e.keyCode == 27 && this.isOpen)
+        this.isOpen = false;
+    });
+    this.$fire.auth.onAuthStateChanged(user => {
+      this.user = user;
+    });
 
+    this.cart = JSON.parse(localStorage.getItem("cart_storage"))
+    console.log(this.cart)
+    localStorage.setItem("cart_storage", JSON.stringify(getCartItems))
+
+  },
+  computed: {
+    ...mapGetters('cart', ['getCartItems']),
+  },
   methods: {
     drawer() {
       this.isOpen = !this.isOpen;
@@ -244,10 +262,9 @@ export default {
       this.user = '';
       this.$router.push("/");
     },
-    removeItem(index) {
-      this.cart.splice(index, 1)
-      localStorage.setItem("cart_storage", JSON.stringify(this.cart))
-
+    removeFromCart(index) {
+      this.$store.dispatch('cart/removeFromCart', index)
+      // localStorage.setItem("cart_storage", JSON.stringify(getCartItems))
     }
   },
   watch: {
@@ -262,20 +279,6 @@ export default {
         }
       },
     },
-
-  },
-  async mounted() {
-    document.addEventListener("keydown", e => {
-      if (e.keyCode == 27 && this.isOpen)
-        this.isOpen = false;
-    });
-    this.$fire.auth.onAuthStateChanged(user => {
-      this.user = user;
-    });
-
-    this.cart = await JSON.parse(localStorage.getItem("cart_storage"))
-
-    localStorage.setItem("cart_storage", JSON.stringify(this.cart))
 
   },
 

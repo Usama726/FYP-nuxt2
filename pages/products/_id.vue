@@ -14,7 +14,7 @@
           <p class="mb-2 font-bold">{{ product.price }}</p>
           <div class="btn-align">
 
-            <button v-if="!added" @click="addToCart"
+            <button v-if="!added" @click="addToCart(product)"
               class="px-3 py-1 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">ADD
               TO
               CART</button>
@@ -47,12 +47,9 @@ export default {
     added: false
   }),
   async created() {
-
     const doc = await this.$fire.firestore.collection('products').doc(this.$route.params.id)
       .get()
     this.product = doc.exists ? doc.data() : {}
-
-
   },
   mounted() {
 
@@ -61,18 +58,10 @@ export default {
   methods: {
     addToCart() {
       this.$store.dispatch('cart/addToCart', this.product)
+      this.added=true
     }
-
-    // ...mapMutations(['add']),
-    // ...mapActions('cart', ['addToCart'])
 
   }
 };
 
 </script>
-<!-- <script setup>
-import { onMounted } from 'vue';
-onMounted(() => {
-  cart = JSON.parse(localStorage.getItem("cart_storage") || '[]')
-})
-</script> -->

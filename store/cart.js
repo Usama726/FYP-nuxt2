@@ -2,12 +2,22 @@
 // store/cart.js
 
 export const state = () => ({
-  cartItems: []
+  cartItems: [],
+  
 })
+export const getters = {
+  getCartItems(state) {
+    return state.cartItems
+  }
+}
 
 export const mutations = {
   addToCart(state, item) {
     state.cartItems.push(item)
+
+    localStorage.setItem("cart_storage", JSON.stringify(state.cartItems))
+
+    console.log('Hello World')
   },
   removeFromCart(state, item) {
     const index = state.cartItems.indexOf(item)
@@ -23,7 +33,9 @@ export const actions = {
   },
   removeFromCart({ commit }, item) {
     commit('removeFromCart', item)
-  }
+  },
+  JSON.parse(localStorage.getItem("cart_storage"))
+
 }
 
 
