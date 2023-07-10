@@ -86,7 +86,7 @@
 
         <div class="flex flex-col w-full ml-6 lg:ml-12 lg:w-2/5">
           <div class="pt-12 md:pt-0 2xl:ps-4">
-            <h2 class="text-xl font-bold text-center">Your Bag
+            <h2 class="text-xl font-bold text-center text-blue-500 animate-pulse">Your Bag
             </h2>
             <div class="mt-4">
               <div class="flex flex-col space-y-4">
@@ -111,18 +111,20 @@
                 </div>
               </div>
             </div>
-            <div class="flex p-4 mt-4">
-              <h2 class="text-xl font-bold">Total Items in Cart : {{ cartItems.length }}</h2>
-            </div>
-            <div
-              class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-              Subtotal<span class="ml-2">`$40.00 * `</span></div>
-            <div
-              class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-              Fix Shipping<span class="ml-2">$10</span></div>
-            <div
-              class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-              Total<span class="ml-2">$50.00</span></div>
+            <div class="flex p-2 mt-4">
+            <h2 class="text-xl font-bold">Total Items in Cart : {{ cartItems.length }}</h2>
+          </div>
+          <div
+            class="flex items-center w-full py-4 text-sm font-semibold border-y border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Subtotal : <span class="ml-2"> PKR {{ getTotal }} </span>
+          </div>
+          <div
+            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Fix Shipping : <span class="ml-2">PKR {{ shipping }}</span></div>
+          <div
+            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 mb-4">
+            Total : <span class="ml-2">PKR {{ getTotal + shipping }}</span>
+          </div>
           </div>
         </div>
       </div>
@@ -131,32 +133,27 @@
 </template>
 
 <script>
-
-
+import { mapGetters } from 'vuex'
 export default {
 
   data: () => ({
-    user: ''
+    user: '',
+    shipping:200
   }),
-  
+
   computed: {
     cartItems() {
       return this.$store.state.cart.cartItems
-    }
+    },
+    ...mapGetters('cart', ["getTotal"]),
   },
   async created() {
     this.user = this.$fire.auth.currentUser
-
   },
-  async mounted() {
-    // this.cartItems = JSON.parse(localStorage.getItem("cart_storage"))
-  },
+ 
   methods: {
     removeFromCart(product) {
       this.$store.dispatch('cart/removeFromCart', product)
-      // this.cartItems.splice(product, 1)
-      // localStorage.setItem("cart_storage", JSON.stringify(this.cartItems))
-
     }
   }
 

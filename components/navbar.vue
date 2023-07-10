@@ -174,14 +174,16 @@
     <div v-if="modalIsOpen"
       class="fixed top-0 right-0 z-40 flex items-end justify-end w-full h-screen mr-auto transition-opacity bg-black bg-opacity-50 sm:block ">
       <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-4/12 xl:w-5/12 overflow-scroll">
-        <div class="flex items-center justify-between p-6 ">
-          <h1 class="text-xl font-bold text-blue-500">Your Bag</h1>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-            class="w-6 h-6 cursor-pointer " @click="modalIsOpen = false">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+        <div class="fixed top-0 border-b-2 border-slate-300 bg-slate-100 w-full overflow-hidden">
+          <div class=" flex items-center justify-between z-60  px-6 py-3 w-5/12 ">
+            <h1 class="text-xl font-bold text-blue-500">Your Bag</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6 cursor-pointer " @click="modalIsOpen = false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
         </div>
-        <div class="w-[90%] mx-auto mb-3">
+        <div class="w-[90%] mx-auto mb-3 mt-16">
           <div v-for="(product, index) in getCartItems" :key="index"
             class="flex items-center justify-between pr-3 mb-3 border-2 border-blue-400 rounded-lg">
             <div class="flex items-center pr-2 space-x-4">
@@ -190,35 +192,37 @@
               </div>
               <div>
                 <h2 class="mb-3 font-bold text-md">{{ product.name }}</h2>
-
                 <span class="text-black "> PKR {{ product.price }} .00</span>
                 <p class="text-black "> Quantity : {{ product.quantity }}</p>
-                <!-- <p class="text-black "> Total : {{ product.quantity * product.price }}</p> -->
+                <p class="text-black "> Total : {{ product.quantity * product.price }}</p>
               </div>
             </div>
             <div>
-              <button @click="removeFromCart(product)" class="border-2 border-gray-600 p-2 font-bold rounded-large">
-                <!-- <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg> -->
+              <button @click="removeFromCart(product)" class="border-2 border-gray-600 p-2 font-bold rounded-lg">
                 Remove
               </button>
             </div>
           </div>
-          <div class="flex p-4 mt-4">
+          <div class="flex p-2 mt-4">
             <h2 class="text-xl font-bold">Total Items in Cart : {{ getCartItems.length }}</h2>
           </div>
-          <div v-for="(product, index) in getCartItems" :key="index"
-            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-            Subtotal<span class="ml-2">{{product.quantity * product.price}}</span></div>
+          <div
+            class="flex items-center w-full py-4 text-sm font-semibold border-y border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            Subtotal : <span class="ml-2"> {{ getTotal }} </span>
+          </div>
           <div
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-            Fix Shipping<span class="ml-2">$10</span></div>
+            Fix Shipping : <span class="ml-2">{{ shipping }}</span></div>
           <div
-            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-            Total<span class="ml-2">$50.00</span></div>
+            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 mb-4">
+            Total : <span class="ml-2">{{ getTotal + shipping }}</span>
+          </div>
+          <nuxt-link to="/checkout"
+          class="ml-3 px-3 py-1 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">
+          Checkout
+        </nuxt-link>
         </div>
+        
       </div>
     </div>
   </div>
@@ -234,10 +238,11 @@ export default {
       user: '',
       isOpen: false,
       cart: [],
-      modalIsOpen: false
+      modalIsOpen: false,
+      shipping: 200
     };
   },
- mounted() {
+  mounted() {
     document.addEventListener("keydown", e => {
       if (e.keyCode == 27 && this.isOpen)
         this.isOpen = false;
@@ -246,14 +251,14 @@ export default {
       this.user = user;
     });
 
-    this.cart =  JSON.parse(localStorage.getItem("cart_storage"))
+    this.cart = JSON.parse(localStorage.getItem("cart_storage"))
     console.log(this.cart)
     // localStorage.setItem("cart_storage", JSON.stringify(getCartItems))
 
   },
   computed: {
     ...mapGetters('cart', ['getCartItems']),
-
+    ...mapGetters('cart', ["getTotal"]),
   },
   methods: {
     drawer() {
@@ -293,6 +298,7 @@ export default {
   width: 8rem;
   height: 2.5rem;
 }
+
 .nav-bg {
   background-image: linear-gradient(to right, hsl(217, 88%, 33.7%), hsl(217, 88%, 75.1%));
 }

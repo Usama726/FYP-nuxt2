@@ -3,24 +3,28 @@
 let cartItems = localStorage.getItem('cart_storage')
 export const state = () => ({
   cartItems: cartItems ? JSON.parse(cartItems) : [],
+  price: []
 
 })
 export const getters = {
   getCartItems(state) {
     return state.cartItems
+  },
+  getTotal: state => {
+    return state.cartItems.reduce((total, lineItem) => total + (lineItem.quantity * lineItem.price), 0);
   }
+
 }
 
 export const mutations = {
   addToCart(state, item) {
-    let existingProduct = state.cartItems.filter(product => product.id == item.id);
+    let existingProduct = state.cartItems.find(product => product.name == item.name);
     if (existingProduct) {
       existingProduct.quantity++
     }
     else {
       state.cartItems.push(item)
     }
-    console.log(existingProduct);
     localStorage.setItem("cart_storage", JSON.stringify(state.cartItems))
 
   },
