@@ -84,6 +84,7 @@ export default {
       description: '',
       price: 0,
       imageUrl: null,
+      quantity:1
     }
   },
   methods: {
@@ -100,6 +101,7 @@ export default {
         description: this.description,
         price: this.price,
         imageUrl: this.imageUrl,
+        quantity:this.quantity,
       })
         .then(() => {
           alert('Product added successfully!')

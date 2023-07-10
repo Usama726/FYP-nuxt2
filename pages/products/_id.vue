@@ -12,6 +12,13 @@
           <h1 class="text-sm font-bold md:text-lg">{{ product.name }}</h1>
           <p class="mb-2">{{ product.description }}</p>
           <p class="mb-2 font-bold">{{ product.price }}</p>
+          <div class="flex items-center space-x-3 mb-4">
+            <p class=" text-2xl"> quantity : {{ product.quantity }}</p>
+            <button class="px-2 text-2xl rounded-lg font-bold border-2 border-blue-400 text-blue-400"
+              @click="product.quantity++">+</button>
+            <button class="px-3 rounded-lg text-2xl font-bold border-2 border-blue-400 text-blue-400"
+              @click="decrement">-</button>
+          </div>
           <div class="btn-align">
 
             <button v-if="!added" @click="addToCart(product)"
@@ -44,7 +51,8 @@ export default {
   data: () => ({
     product: {},
     cart: [],
-    added: false
+    added: false,
+
   }),
   async created() {
     const doc = await this.$fire.firestore.collection('products').doc(this.$route.params.id)
@@ -58,9 +66,16 @@ export default {
   methods: {
     addToCart() {
       this.$store.dispatch('cart/addToCart', this.product)
-      this.added=true
+      this.added = true
+    },
+    decrement() {
+      if (this.product.qunatity > 0) {
+        this.product.quantity--;
+      }
+      else{
+        this.product.quantity ;
+      }
     }
-
   }
 };
 

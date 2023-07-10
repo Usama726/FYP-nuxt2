@@ -164,9 +164,9 @@ export default {
   methods: {
     watcher() {
       this.$fire.firestore.collection('products').onSnapshot((querySnapshot) => {
-        this.editedProduct = [];
+        this.products = [];
         querySnapshot.forEach((doc) => {
-          this.editedProduct.push(doc);
+          this.products.push(doc);
         });
       });
 
@@ -186,7 +186,6 @@ export default {
       const { id, ...updatedProduct } = this.editedProduct
       await this.$fire.firestore.collection('products').doc(id).update(updatedProduct)
       .then(()=>{
-        this.watcher();
         alert('Product Updated Successfully')
         this.$router.push('/admin/productlist')
       })

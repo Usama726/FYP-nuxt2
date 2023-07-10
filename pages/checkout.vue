@@ -136,9 +136,9 @@
 export default {
 
   data: () => ({
-    // cartItems: [],
     user: ''
   }),
+  
   computed: {
     cartItems() {
       return this.$store.state.cart.cartItems

@@ -172,9 +172,9 @@
     </nav>
 
     <div v-if="modalIsOpen"
-      class="fixed top-0 right-0 z-40 flex items-end justify-end w-full h-screen mr-auto transition-opacity bg-black bg-opacity-50 sm:block">
-      <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-4/12 xl:w-5/12">
-        <div class="flex items-center justify-between p-6">
+      class="fixed top-0 right-0 z-40 flex items-end justify-end w-full h-screen mr-auto transition-opacity bg-black bg-opacity-50 sm:block ">
+      <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-4/12 xl:w-5/12 overflow-scroll">
+        <div class="flex items-center justify-between p-6 ">
           <h1 class="text-xl font-bold text-blue-500">Your Bag</h1>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6 cursor-pointer " @click="modalIsOpen = false">
@@ -182,7 +182,7 @@
           </svg>
         </div>
         <div class="w-[90%] mx-auto mb-3">
-          <div v-for="(product, index) in cart" :key="index"
+          <div v-for="(product, index) in getCartItems" :key="index"
             class="flex items-center justify-between pr-3 mb-3 border-2 border-blue-400 rounded-lg">
             <div class="flex items-center pr-2 space-x-4">
               <div class="w-36 h-36">
@@ -192,6 +192,8 @@
                 <h2 class="mb-3 font-bold text-md">{{ product.name }}</h2>
 
                 <span class="text-black "> PKR {{ product.price }} .00</span>
+                <p class="text-black "> Quantity : {{ product.quantity }}</p>
+                <!-- <p class="text-black "> Total : {{ product.quantity * product.price }}</p> -->
               </div>
             </div>
             <div>
@@ -205,11 +207,11 @@
             </div>
           </div>
           <div class="flex p-4 mt-4">
-            <h2 class="text-xl font-bold">Total Items in Cart : {{ cart.length }}</h2>
+            <h2 class="text-xl font-bold">Total Items in Cart : {{ getCartItems.length }}</h2>
           </div>
-          <div
+          <div v-for="(product, index) in getCartItems" :key="index"
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-            Subtotal<span class="ml-2">`$40.00 * `</span></div>
+            Subtotal<span class="ml-2">{{product.quantity * product.price}}</span></div>
           <div
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
             Fix Shipping<span class="ml-2">$10</span></div>
@@ -235,7 +237,7 @@ export default {
       modalIsOpen: false
     };
   },
-  mounted() {
+ mounted() {
     document.addEventListener("keydown", e => {
       if (e.keyCode == 27 && this.isOpen)
         this.isOpen = false;
@@ -244,13 +246,14 @@ export default {
       this.user = user;
     });
 
-    this.cart = JSON.parse(localStorage.getItem("cart_storage"))
+    this.cart =  JSON.parse(localStorage.getItem("cart_storage"))
     console.log(this.cart)
-    localStorage.setItem("cart_storage", JSON.stringify(getCartItems))
+    // localStorage.setItem("cart_storage", JSON.stringify(getCartItems))
 
   },
   computed: {
     ...mapGetters('cart', ['getCartItems']),
+
   },
   methods: {
     drawer() {
@@ -264,7 +267,6 @@ export default {
     },
     removeFromCart(index) {
       this.$store.dispatch('cart/removeFromCart', index)
-      // localStorage.setItem("cart_storage", JSON.stringify(getCartItems))
     }
   },
   watch: {
@@ -291,7 +293,6 @@ export default {
   width: 8rem;
   height: 2.5rem;
 }
-
 .nav-bg {
   background-image: linear-gradient(to right, hsl(217, 88%, 33.7%), hsl(217, 88%, 75.1%));
 }

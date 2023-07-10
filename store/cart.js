@@ -1,9 +1,9 @@
 
 // store/cart.js
-
+let cartItems = localStorage.getItem('cart_storage')
 export const state = () => ({
-  cartItems: [],
-  
+  cartItems: cartItems ? JSON.parse(cartItems) : [],
+
 })
 export const getters = {
   getCartItems(state) {
@@ -13,18 +13,26 @@ export const getters = {
 
 export const mutations = {
   addToCart(state, item) {
-    state.cartItems.push(item)
-
+    let existingProduct = state.cartItems.filter(product => product.id == item.id);
+    if (existingProduct) {
+      existingProduct.quantity++
+    }
+    else {
+      state.cartItems.push(item)
+    }
+    console.log(existingProduct);
     localStorage.setItem("cart_storage", JSON.stringify(state.cartItems))
 
-    console.log('Hello World')
   },
   removeFromCart(state, item) {
     const index = state.cartItems.indexOf(item)
     if (index > -1) {
       state.cartItems.splice(index, 1)
+      localStorage.setItem("cart_storage", JSON.stringify(state.cartItems))
+
     }
-  }
+  },
+
 }
 
 export const actions = {
@@ -34,7 +42,7 @@ export const actions = {
   removeFromCart({ commit }, item) {
     commit('removeFromCart', item)
   },
-  JSON.parse(localStorage.getItem("cart_storage"))
+
 
 }
 
