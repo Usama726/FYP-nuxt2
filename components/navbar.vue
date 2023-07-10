@@ -198,12 +198,15 @@
               </div>
             </div>
             <div>
-              <button @click="removeFromCart(product)" class="border-2 border-gray-600 p-2 font-bold rounded-lg">
+              <button @click="removeFromCart(product)" class="border-2 border-blue-500 hover:text-blue-500 p-2 font-bold rounded-lg">
                 Remove
               </button>
             </div>
           </div>
-          <div class="flex p-2 mt-4">
+          <div v-if="getCartItems.length == 0" class="flex p-2 mt-4">
+            <h2 class="text-xl font-bold">Your Cart Is Empty </h2>
+          </div>
+          <div v-else class="flex p-2 mt-4">
             <h2 class="text-xl font-bold">Total Items in Cart : {{ getCartItems.length }}</h2>
           </div>
           <div
@@ -213,16 +216,18 @@
           <div
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
             Fix Shipping : <span class="ml-2">{{ shipping }}</span></div>
-          <div
+          <div v-if="getTotal > 0"
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 mb-4">
             Total : <span class="ml-2">{{ getTotal + shipping }}</span>
           </div>
-          <nuxt-link to="/checkout"
-          class="ml-3 px-3 py-1 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">
-          Checkout
-        </nuxt-link>
+          <div class="mt-4">
+            <nuxt-link to="/checkout"
+              class="ml-3 px-3 py-1 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">
+              Checkout
+            </nuxt-link>
+          </div>
         </div>
-        
+
       </div>
     </div>
   </div>

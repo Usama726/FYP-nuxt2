@@ -111,20 +111,24 @@
                 </div>
               </div>
             </div>
-            <div class="flex p-2 mt-4">
-            <h2 class="text-xl font-bold">Total Items in Cart : {{ cartItems.length }}</h2>
-          </div>
-          <div
-            class="flex items-center w-full py-4 text-sm font-semibold border-y border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-            Subtotal : <span class="ml-2"> PKR {{ getTotal }} </span>
-          </div>
-          <div
-            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-            Fix Shipping : <span class="ml-2">PKR {{ shipping }}</span></div>
-          <div
-            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 mb-4">
-            Total : <span class="ml-2">PKR {{ getTotal + shipping }}</span>
-          </div>
+            <div v-if="cartItems.length == 0" class="flex p-2 mt-4">
+              <h2 class="text-xl font-bold">Your Cart Is Empty </h2>
+            </div>
+            <div v-else class="flex p-2 mt-4">
+              <h2 class="text-xl font-bold">Total Items in Cart : {{ cartItems.length }}</h2>
+            </div>
+            <div
+              class="flex items-center w-full py-4 text-sm font-semibold border-y border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+              Subtotal : <span class="ml-2"> PKR {{ getTotal }} </span>
+            </div>
+            <div
+              class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+              Fix Shipping : <span class="ml-2">PKR {{ shipping }}</span></div>
+            <div v-if="getTotal > 0"
+              class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 mb-4">
+              Total : <span class="ml-2">PKR {{ getTotal + shipping }}</span>
+            </div>
+
           </div>
         </div>
       </div>
@@ -138,7 +142,7 @@ export default {
 
   data: () => ({
     user: '',
-    shipping:200
+    shipping: 200
   }),
 
   computed: {
@@ -150,7 +154,7 @@ export default {
   async created() {
     this.user = this.$fire.auth.currentUser
   },
- 
+
   methods: {
     removeFromCart(product) {
       this.$store.dispatch('cart/removeFromCart', product)
