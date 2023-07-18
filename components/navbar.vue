@@ -191,14 +191,15 @@
                 <img :src="product.imageUrl">
               </div>
               <div>
-                <h2 class="mb-3 font-bold text-md">{{ product.name }}</h2>
+                <h2 class="mb-3 font-bold text-md ">{{ product.name }}</h2>
                 <span class="text-black "> PKR {{ product.price }} .00</span>
                 <p class="text-black "> Quantity : {{ product.quantity }}</p>
                 <p class="text-black "> Total : {{ product.quantity * product.price }}</p>
               </div>
             </div>
             <div>
-              <button @click="removeFromCart(product)" class="border-2 border-blue-500 hover:text-blue-500 p-2 font-bold rounded-lg">
+              <button @click="removeFromCart(product)"
+                class="border-2 border-blue-500 hover:text-blue-500 p-2 font-bold rounded-lg">
                 Remove
               </button>
             </div>
@@ -242,7 +243,6 @@ export default {
     return {
       user: '',
       isOpen: false,
-      cart: [],
       modalIsOpen: false,
       shipping: 200
     };
@@ -255,10 +255,6 @@ export default {
     this.$fire.auth.onAuthStateChanged(user => {
       this.user = user;
     });
-
-    this.cart = JSON.parse(localStorage.getItem("cart_storage"))
-    console.log(this.cart)
-    // localStorage.setItem("cart_storage", JSON.stringify(getCartItems))
 
   },
   computed: {
