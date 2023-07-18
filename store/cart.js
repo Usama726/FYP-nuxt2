@@ -1,10 +1,13 @@
 
-// store/cart.js
+// State Section
 
-const cartItems = localStorage.getItem("cart_storage")
+var cartItems = localStorage.getItem("cart_storage")
 export const state = () => ({
-  cartItems: JSON.parse(cartItems) || [],
+  cartItems: cartItems ? JSON.parse(cartItems) : [],
 })
+
+// Getters Section
+
 export const getters = {
   getCartItems(state) {
     return state.cartItems
@@ -13,6 +16,9 @@ export const getters = {
     return state.cartItems.reduce((total, cartItem) => total + (cartItem.quantity * cartItem.price), 0);
   }
 }
+
+// Mutations Section
+
 export const mutations = {
   addToCart(state, item) {
     state.cartItems.push(item)
@@ -36,7 +42,14 @@ export const mutations = {
     }
     localStorage.setItem("cart_storage", JSON.stringify(state.cartItems))
   },
+
+  clearCart(state) {
+    state.cartItems = [];
+    localStorage.removeItem('cart_storage');
+  }
 }
+
+// Actions Section
 
 export const actions = {
   addToCart({ state, commit }, item) {

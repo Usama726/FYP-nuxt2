@@ -75,6 +75,7 @@
       </div>
 
     </div>
+    <thefooter />
   </div>
 </template>
 

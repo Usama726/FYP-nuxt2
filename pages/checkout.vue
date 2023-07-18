@@ -134,7 +134,6 @@
               class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 mb-4">
               Total : <span class="ml-2">PKR {{ getTotal + shipping }}</span>
             </div>
-
           </div>
         </div>
       </div>
@@ -158,12 +157,10 @@ export default {
   }),
 
   computed: {
-
-    ...mapGetters('cart', ["getTotal", "getCartItems"]),
-
+    ...mapGetters('cart', ["getTotal", "getCartItems"])
   },
-  async mounted() {
 
+  async mounted() {
     this.$fire.auth.onAuthStateChanged(user => {
       this.user = user;
     });
@@ -175,7 +172,6 @@ export default {
     },
 
     async uploadOrderDetails() {
-
       const userDetails = {
         FirstName: this.firstName,
         LastName: this.lastName,
@@ -191,20 +187,20 @@ export default {
       }
       await this.$fire.firestore.collection('orders').add(checkoutData)
         .then(() => {
-          // alert('Product ordered successfully!')
+          alert('Product ordered successfully!')
           this.firstName = '',
-            this.lastName = '',
-            this.email = '',
-            this.phone = '',
-            this.address = '',
-            this.notes = '',
-            this.$router.push('/')
+          this.lastName = '',
+          this.email = '',
+          this.phone = '',
+          this.address = '',
+          this.notes = '',
+          this.$router.push('/medicines')
+          this.$store.commit('cart/clearCart');
         })
         .catch(error => {
           console.error(error)
         })
-      this.getCartItems = []
-      localStorage.setItem("cart_storage", JSON.stringify(this.getCartItems))
+
     }
   }
 
