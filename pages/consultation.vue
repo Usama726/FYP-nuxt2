@@ -14,12 +14,12 @@
             </div>
           </li>
         </ul>
-        <div clas="fixed bottom-0">
-          <form class="flex gap-2  align-center" v-if="user" @submit.prevent="sendMessage">
-            <textarea class="w-4/5 h-10 p-1 my-2 border-2 border-black rounded-lg focus:outline-none "
+        <div clas="">
+          <form class="absolute bottom-0 flex gap-2 items-center justify-between" v-if="user" @submit.prevent="sendMessage">
+            <textarea class="w-[530px] h-10 p-1 my-2 border-2 border-black rounded-lg focus:outline-none "
               v-model="newMessage" type="text" required></textarea>
             <button class="p-2 ">
-              <svg width="24px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                 <g id="SVGRepo_iconCarrier">
@@ -56,7 +56,7 @@ export default {
   },
   async created() {
 
-    this.user = this.$fire.auth.currentUser
+    // this.user = this.$fire.auth.currentUser
     if (this.user) {
       const userRef = await this.$fire.firestore.collection('users').doc(this.user.uid)
       await userRef.collection('messages')
@@ -81,7 +81,13 @@ export default {
 
       }
     }
-  }
+  },
+  async mounted() {
+    this.$fire.auth.onAuthStateChanged(user => {
+      this.user = user;
+    });
+  },
+
 }
 </script>
 
