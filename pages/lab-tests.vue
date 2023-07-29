@@ -1,6 +1,14 @@
 <template>
   <div>
-
+    <navbar />
+    <!-- Top Banner Of Every Page -->
+    <top-svg />
+    <top-header><span class="text-red-800 "> Lab-Tests</span> With Ease Of <br>Home Sampling</top-header>
+    <div
+      class="mt-[180px] mb-64 mx-auto w-11/12 grid grid-cols-1 gap-10">
+      <lab-test :product="product" v-for="(product, index) in tests" :key="`${product.id}-product-${index}`">
+      </lab-test>
+    </div>
     <div class="">
       <div class=" py-24 res-content">
 
@@ -30,7 +38,8 @@
             <p class="res-iconItem-heading">Home Visit </p>
 
 
-            <p class="res-iconItem-desc">With Wahab Pharmacy, you get professional phlebotomists to pick-up the sample from
+            <p class="res-iconItem-desc">With Wahab Pharmacy, you get professional phlebotomists to pick-up the sample
+              from
               your home or preferred location.</p>
 
           </div>
@@ -56,7 +65,8 @@
             <p class="res-iconItem-heading">Up to 30% OFF </p>
 
 
-            <p class="res-iconItem-desc">At Wahab Pharmacy, you save at every step! On diagnostic tests, get up to 30% off!
+            <p class="res-iconItem-desc">At Wahab Pharmacy, you save at every step! On diagnostic tests, get up to 30%
+              off!
             </p>
 
           </div>
@@ -66,10 +76,36 @@
       </div>
 
     </div>
-
+    <thefooter />
   </div>
 </template>
 
+<script>
+import labtest from '../components/labTest.vue';
+
+export default {
+  components: { labtest },
+  data: () => ({
+    tests: [],
+    cart: [],
+  }),
+  async created() {
+    const items = []
+    await this.$fire.firestore.collection('tests').get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        items.push({
+          id: doc.id,
+          ...doc.data()
+        })
+
+      });
+
+      this.tests = items
+    })
+  },
+
+};
+</script>
 <style scoped>
 .res {
   margin: 2rem 0rem;

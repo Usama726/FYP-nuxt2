@@ -5,7 +5,8 @@
       <h1 class="animate-pulse flex items-center justify-center font-bold text-blue-600 text-3xl lg:text-5xl mb-3">
         Checkout
       </h1>
-      <nuxt-link to="/medicines" class="underline text-blue-700 text-xl text-center">&lArr; Back to shop</nuxt-link>
+      <nuxt-link to="/medicines" class="underline text-blue-700 text-xl text-center mr-4">&lArr; Back to Shop</nuxt-link>
+      <nuxt-link to="/" class="underline text-blue-700 text-xl text-center">&lArr; Back to Home</nuxt-link>
     </div>
     <div class="lg:container p-12 mx-auto">
       <div class="flex flex-col w-full px-0 mx-auto md:flex-row">
@@ -53,8 +54,6 @@
                     name="Address" cols="20" rows="4" placeholder="Address" v-model="address"></textarea>
                 </div>
               </div>
-
-
               <div class="relative pt-3 xl:pt-6">
                 <label for="note" class="block mb-3 text-sm font-semibold text-gray-500">
                   Notes
@@ -101,7 +100,7 @@
                     <img class="overflow:hidden" :src="product.imageUrl">
                   </div>
                   <div>
-                    <h2 class="text-md font-bold mb-3">{{ product.name }}</h2>
+                    <h2 class="text-md font-bold mb-3">{{ product.name || product.testName }}</h2>
                     <span class="text-black "> PKR {{ product.price }} .00</span>
                     <p class="text-black "> Quantity : {{ product.quantity }}</p>
                     <p class="text-black "> Total : {{ product.quantity * product.price }}</p>

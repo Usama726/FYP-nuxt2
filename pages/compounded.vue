@@ -1,10 +1,13 @@
 
 <template>
-  <div >
+  <div>
+    <navbar />
+    <top-svg />
+    <top-header>Upload Your Compounded <span class="text-red-800 ">Prescription</span> Here</top-header>
     <div class=" pt-16 flex justify-center ">
-    <img class=" mt-6 w-48" src="~/assets/images/prescription-upload-image.avif">
-  </div>
-    <div class="border-2 border-black mt-8 mb-4 p-2  sm:w-1/2 m-auto center">
+      <img class=" mt-6 w-48" src="~/assets/images/prescription-upload-image.avif">
+    </div>
+    <div class="border-2 border-blue-500 mt-8 mb-28 p-2  sm:w-1/2 m-auto center">
       <input type="file" @change="previewImage" accept="image/*">
       <div>
         <p>Progress: {{ uploadValue.toFixed() + "%" }}
@@ -14,9 +17,16 @@
       <div v-if="imageData != null">
         <img class="preview" :src="picture">
         <br>
-        <button @click="onUpload">Upload</button>
+        <div v-if="picture = null">
+          <button @click="onPreview">Preview</button>
+        </div>
+        <div v-else>
+          <button @click="onUpload">Upload</button>
+        </div>
+        <button @click="onCancel">Cancel</button>
       </div>
     </div>
+    <Thefooter />
   </div>
 </template>
 
@@ -28,7 +38,7 @@ export default {
       imageData: null,
       picture: null,
       uploadValue: 0,
-      imageUrl:'',
+      imageUrl: '',
     }
   },
   methods: {
@@ -38,7 +48,7 @@ export default {
       this.imageData = event.target.files[0];
     },
 
-    onUpload() {
+    onPreview() {
       this.picture = null;
       const storageRef = this.$fire.storage.ref(`${this.imageData.name}`).put(this.imageData);
       storageRef.on(`state_changed`, snapshot => {
@@ -46,11 +56,23 @@ export default {
       }, error => { console.log(error.message) },
         () => {
           this.uploadValue = 100;
-         storageRef.snapshot.ref.getDownloadURL().then((url) => {
+          storageRef.snapshot.ref.getDownloadURL().then((url) => {
             this.picture = url;
           });
         }
       );
+    },
+    onCancel() {
+      this.picture = null;
+      this.uploadValue = 0;
+      this.imageData = null
+
+    },
+    onUpload() {
+      this.picture = null;
+      this.uploadValue = 0;
+      this.imageData = null
+
     }
 
   }
@@ -58,9 +80,10 @@ export default {
 </script>
 
 <style scoped>
-.center{
+.center {
   text-align: center;
 }
+
 img.preview {
   width: 200px;
   margin: 0 auto;

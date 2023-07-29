@@ -2,10 +2,10 @@
   <div>
     <navbar />
     <div class="px-16 pt-24 mb-64">
-      <div class="container relative p-2 m-auto mb-4 border-2 border-black md:w-1/2 chat-window">
+      <div class="container file:relative p-2 m-auto mb-4 border-2 border-black md:w-1/2 chat-window">
         <ul>
           <li class="w-2/3" v-for="message in messages" :key="message.id">
-            <div class="flex flex-col mb-3 border border-gray-300 rounded-lg  position">
+            <div class="flex flex-col mb-3 border border-gray-300 rounded-lg">
 
               <p class="flex justify-between px-1 text-orange-400 bg-gray-100">{{ message.email }}
               </p>
@@ -14,8 +14,8 @@
             </div>
           </li>
         </ul>
-        <div clas="">
-          <form class="absolute bottom-0 flex gap-2 items-center justify-between" v-if="user" @submit.prevent="sendMessage">
+        <div clas="absolute bottom-0">
+          <form class=" flex gap-2 items-center justify-between" v-if="user" @submit.prevent="sendMessage">
             <textarea class="w-[530px] h-10 p-1 my-2 border-2 border-black rounded-lg focus:outline-none "
               v-model="newMessage" type="text" required></textarea>
             <button class="p-2 ">
@@ -54,18 +54,23 @@ export default {
 
     }
   },
+  async mounted() {
+    await this.$fire.auth.onAuthStateChanged(user => {
+      this.user = user;
+    });
+  },
+  
   async created() {
-
-    // this.user = this.$fire.auth.currentUser
+    // this.user = await this.$fire.auth.currentUser
     if (this.user) {
-      const userRef = await this.$fire.firestore.collection('users').doc(this.user.uid)
+      const userRef = this.$fire.firestore.collection('users').doc(this.user.uid)
       await userRef.collection('messages')
         .orderBy('timestamp', "asc")
         .onSnapshot(querySnapshot => {
           this.messages = querySnapshot.docs.map(doc => doc.data())
+          console.log(this.messages)
         })
     }
-
   },
   methods: {
     async sendMessage() {
@@ -82,11 +87,7 @@ export default {
       }
     }
   },
-  async mounted() {
-    this.$fire.auth.onAuthStateChanged(user => {
-      this.user = user;
-    });
-  },
+
 
 }
 </script>

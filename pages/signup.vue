@@ -127,7 +127,7 @@ export default {
             email: this.email,
             firstName: this.firstName,
             lastName: this.lastName,
-            timestamp: new Date()
+            createdAt: new Date()
           })
           this.firstName = '',
             this.lastName = '',

@@ -191,7 +191,7 @@
                 <img :src="product.imageUrl">
               </div>
               <div>
-                <h2 class="mb-3 font-bold text-md ">{{ product.name }}</h2>
+                <h2 class="mb-3 font-bold text-md ">{{ product.name || product.testName }}</h2>
                 <span class="text-black "> PKR {{ product.price }} .00</span>
                 <p class="text-black "> Quantity : {{ product.quantity }}</p>
                 <p class="text-black "> Total : {{ product.quantity * product.price }}</p>

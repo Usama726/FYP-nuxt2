@@ -2,8 +2,13 @@
   <div class="bg-gray-900 w-full ">
     <div>
       <admin-nav />
-      <div>
-        <table v-if="!showEditForm" class=" text-gray-100 border-separate ml-56 px-16 pt-24 mb-8">
+      <div class="ml-56 px-16 pt-16">
+        <div class="flex justify-center border-2 border-gray-400 mb-2 rounded">
+          <p class="text-3xl text-white font-bold p-3 ">
+            Products List
+          </p>
+        </div>
+        <table v-if="!showEditForm" class=" text-gray-100 border-separate  pt-16 mb-8">
           <tr>
             <th class="w-48  bg-blue-500 text-white border text-center px-4 py-2">Image</th>
             <th class="w-48 bg-blue-500 text-white border text-center px-4 py-2">Name</th>
