@@ -1,7 +1,7 @@
 <template>
   <div class="flex bg-gray-900">
     <admin-nav />
-    <div class=" ml-56 px-16 pt-16 w-full">
+    <div class=" px-16 pt-16 w-full">
       <div class="flex justify-center border-2 border-gray-400 mb-2 rounded">
         <p class="text-3xl text-white font-bold p-3 ">
           Users List

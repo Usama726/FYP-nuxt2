@@ -1,20 +1,18 @@
 <template>
   <div>
     <navbar />
-    <div class="px-16 pt-24 mb-64">
-      <div class="container file:relative p-2 m-auto mb-4 border-2 border-black md:w-1/2 chat-window">
-        <ul>
-          <li class="w-2/3" v-for="message in messages" :key="message.id">
-            <div class="flex flex-col mb-3 border border-gray-300 rounded-lg">
-
+    <div class="px-16 pt-24 mb-24">
+      <div class="container relative p-2 m-auto mb-4 border-2 border-black md:w-1/2 ">
+        <ul class="h-[400px] overflow-y-auto mb-14">
+          <li class="w-2/3 ml-auto" :class="{ 'mr-auto ml-0': message.isAdmin }"  v-for="message in messages" :key="message.id">
+            <div class=" flex flex-col mb-3 border border-gray-300 rounded-lg">
               <p class="flex justify-between px-1 text-orange-400 bg-gray-100">{{ message.email }}
               </p>
-              <p class="p-2"> {{ message.text }}</p>
-
+              <p class="p-2 "> {{ message.text }}</p>
             </div>
           </li>
         </ul>
-        <div clas="absolute bottom-0">
+        <div class="absolute bottom-0 bg-white">
           <form class=" flex gap-2 items-center justify-between" v-if="user" @submit.prevent="sendMessage">
             <textarea class="w-[530px] h-10 p-1 my-2 border-2 border-black rounded-lg focus:outline-none "
               v-model="newMessage" type="text" required></textarea>
@@ -44,34 +42,32 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
       messages: [],
       newMessage: '',
       user: '',
-
     }
   },
-  async mounted() {
-    await this.$fire.auth.onAuthStateChanged(user => {
-      this.user = user;
-    });
-  },
-  
+
   async created() {
     // this.user = await this.$fire.auth.currentUser
-    if (this.user) {
-      const userRef = this.$fire.firestore.collection('users').doc(this.user.uid)
+    console.log('created')
+    await this.$fire.auth.onAuthStateChanged(async user => {
+      console.log('message', user)
+      this.user = user;
+      const userRef = this.$fire.firestore.collection('users').doc(user.uid)
       await userRef.collection('messages')
         .orderBy('timestamp', "asc")
         .onSnapshot(querySnapshot => {
           this.messages = querySnapshot.docs.map(doc => doc.data())
           console.log(this.messages)
         })
-    }
+    });
+
   },
+
   methods: {
     async sendMessage() {
 
@@ -87,14 +83,5 @@ export default {
       }
     }
   },
-
-
 }
 </script>
-
-<style scoped>
-.chat-window {
-  height: 500px;
-  overflow-y: auto;
-}
-</style>

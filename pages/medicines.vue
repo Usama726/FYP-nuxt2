@@ -9,7 +9,7 @@
       <the-product :product="product" v-for="(product, index) in products" :key="`${product.id}-product-${index}`">
       </the-product>
     </div>
-    <thefooter class="" />
+    <thefooter />
   </div>
 </template>
 
