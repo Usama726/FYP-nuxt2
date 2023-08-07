@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-gray-900 h-screen">
+    <div class="bg-gray-900 h-screen sticky top-4">
       <button @click="modalIsOpen = true" class="p-3 ">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-9 h-9 fill-current dark:text-gray-100">
           <rect width="352" height="32" x="80" y="96"></rect>
@@ -24,7 +24,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </div>
-              <div class="relative ">
+              <!-- <div class="relative ">
                 <span class="absolute inset-y-0 left-0 flex items-center py-4">
                   <button type="submit" class="p-2 focus:outline-none focus:ring">
                     <svg fill="currentColor" viewBox="0 0 512 512" class="w-5 h-5 dark:text-gray-400">
@@ -36,9 +36,9 @@
                 </span>
                 <input type="search" name="Search" placeholder="Search..."
                   class="w-full py-2 pl-10 text-md dark:border-transparent rounded-md focus:outline-none dark:bg-gray-800 dark:text-gray-100 focus:dark:bg-gray-900 ">
-              </div>
+              </div> -->
               <div class="flex-1">
-                <ul class="pt-2 pb-4 space-y-4 text-sm border-y-2 border-gray-500">
+                <ul class="pt-2 pb-4 space-y-4 text-sm border-b-2 border-gray-500">
                   <li class="rounded-sm  ">
                     <nuxt-link to="/" class="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"

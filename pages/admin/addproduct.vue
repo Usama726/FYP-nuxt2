@@ -2,7 +2,7 @@
 <template>
   <div class="flex bg-gray-900 h-screen">
     <admin-nav />
-    <div class=" flex-1 ml-56  py-8  px-4 sm:px-6 lg:px-8 ">
+    <div class=" flex-1 py-8  px-4 sm:px-6 lg:px-8 ">
       <div class="px-16">
         <div class="flex justify-center border-2 border-gray-400 mb-2 rounded">
           <p class="text-3xl text-white font-bold p-3 ">

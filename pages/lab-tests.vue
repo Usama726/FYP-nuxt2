@@ -4,78 +4,83 @@
     <!-- Top Banner Of Every Page -->
     <top-svg />
     <top-header><span class="text-red-800 "> Lab-Tests</span> With Ease Of <br>Home Sampling</top-header>
-    <div
-      class="mt-[180px] mb-64 mx-auto w-11/12 grid grid-cols-1 gap-10">
-      <lab-test :product="product" v-for="(product, index) in tests" :key="`${product.id}-product-${index}`">
-      </lab-test>
-    </div>
-    <div class="">
-      <div class=" py-24 res-content">
+    <div class="mt-[180px] mb-16 mx-auto w-11/12 grid grid-cols-1 gap-10">
+      <div class="">
+        <div class=" pt-16 res-content">
+          <div class="res-icons">
+
+            <div class="res-iconItem">
+
+              <img class="bg-blue-200"
+                src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/trustlab_icon_1.png?v=1652272545" alt="">
 
 
-        <div class="res-icons">
-
-          <div class="res-iconItem">
-
-            <img src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/trustlab_icon_1.png?v=1652272545" alt="">
+              <p class="res-iconItem-heading">Trusted Labs </p>
 
 
-            <p class="res-iconItem-heading">Trusted Labs </p>
+              <p class="res-iconItem-desc">Every test booked via Wahab Pharmacy is conducted by <a
+                  href="https://www.hashmanis.com.pk/"
+                  style="text-decoration:none;color:#8897a2;font-weight:400"><u>Hashmanis</u> </a>Labs that are 100%
+                verified and trustworthy.</p>
+
+            </div>
+
+            <div class="res-iconItem">
+
+              <img class="bg-blue-200" src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/home_icon_2.png?v=1652272572"
+                alt="">
 
 
-            <p class="res-iconItem-desc">Every test booked via Wahab Pharmacy is conducted by <a
-                href="https://www.hashmanis.com.pk/"
-                style="text-decoration:none;color:#8897a2;font-weight:400"><u>Hashmanis</u> </a>Labs that are 100%
-              verified and trustworthy.</p>
-
-          </div>
-
-          <div class="res-iconItem">
-
-            <img src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/home_icon_2.png?v=1652272572" alt="">
+              <p class="res-iconItem-heading">Home Visit </p>
 
 
-            <p class="res-iconItem-heading">Home Visit </p>
+              <p class="res-iconItem-desc">With Wahab Pharmacy, you get professional phlebotomists to pick-up the sample
+                from
+                your home or preferred location.</p>
+
+            </div>
+
+            <div class="res-iconItem">
+
+              <img class="bg-blue-200" src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/time_icon_1.png?v=1652272590"
+                alt="">
 
 
-            <p class="res-iconItem-desc">With Wahab Pharmacy, you get professional phlebotomists to pick-up the sample
-              from
-              your home or preferred location.</p>
-
-          </div>
-
-          <div class="res-iconItem">
-
-            <img src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/time_icon_1.png?v=1652272590" alt="">
+              <p class="res-iconItem-heading">Timely and Accurate Reports </p>
 
 
-            <p class="res-iconItem-heading">Timely and Accurate Reports </p>
+              <p class="res-iconItem-desc">Once collected, samples are sent to labs for processing. Detailed reports are
+                shared within a stipulated timeline.</p>
+
+            </div>
+
+            <div class="res-iconItem">
+
+              <img class="bg-blue-200"
+                src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/upto30_icon_1.png?v=1652272606" alt="">
 
 
-            <p class="res-iconItem-desc">Once collected, samples are sent to labs for processing. Detailed reports are
-              shared within a stipulated timeline.</p>
-
-          </div>
-
-          <div class="res-iconItem">
-
-            <img src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/upto30_icon_1.png?v=1652272606" alt="">
+              <p class="res-iconItem-heading">Up to 30% OFF </p>
 
 
-            <p class="res-iconItem-heading">Up to 30% OFF </p>
+              <p class="res-iconItem-desc">At Wahab Pharmacy, you save at every step! On diagnostic tests, get up to 30%
+                off!
+              </p>
 
-
-            <p class="res-iconItem-desc">At Wahab Pharmacy, you save at every step! On diagnostic tests, get up to 30%
-              off!
-            </p>
+            </div>
 
           </div>
 
         </div>
 
       </div>
-
+      <div class="container mx-auto py-8">
+        <h1 class=" text-center text-blue-500 text-lg md:text-3xl border-b-2 border-blue-100 pb-3 ">Lab Tests List</h1>
+        <lab-test :product="product" v-for="(product, index) in tests" :key="`${product.id}-product-${index}`">
+        </lab-test>
+      </div>
     </div>
+
     <thefooter />
   </div>
 </template>
@@ -115,7 +120,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  /* align-items: center;  */
 }
 
 .res-iconItem {
@@ -123,6 +128,7 @@ export default {
   display: flex;
   padding: 0rem 1rem;
   flex-direction: column;
+  /* align-items: center; */
 }
 
 .res-iconItem img {
@@ -133,13 +139,18 @@ export default {
   image-rendering: -o-crisp-edges;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
+  align-self: center;
+  padding: 2px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
 }
 
 .res-iconItem-heading {
   /*   	margin-top:0.25rem; */
-  font-weight: normal;
+  font-weight: bold;
   font-weight: 16px;
   color: #4f585e;
+
 }
 
 .res-iconItem-desc {

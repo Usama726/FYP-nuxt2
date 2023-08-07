@@ -1,20 +1,21 @@
 <template>
   <div>
     <navbar />
-    <div class="px-16 pt-24 mb-24">
-      <div class="container relative p-2 m-auto mb-4 border-2 border-black md:w-1/2 ">
-        <ul class="h-[400px] overflow-y-auto mb-14">
-          <li class="w-2/3 ml-auto" :class="{ 'mr-auto ml-0': message.isAdmin }"  v-for="message in messages" :key="message.id">
-            <div class=" flex flex-col mb-3 border border-gray-300 rounded-lg">
-              <p class="flex justify-between px-1 text-orange-400 bg-gray-100">{{ message.email }}
+    <div class="px-16 pt-20 mb-24">
+      <div class=" relative p-2 m-auto mb-4 border-2 border-black w-full md:w-2/3 ">
+        <ul class="h-[380px] overflow-y-auto mb-2">
+          <li class="w-2/3 p-2 ml-auto" :class="{ 'mr-[33%] ': message.isAdmin }" v-for="message in messages"
+            :key="message.id">
+            <div class=" flex flex-col mb-3 border border-gray-300 rounded-lg p-2 bg-blue-300 " :class="{ 'bg-gray-200 ': message.isAdmin }">
+              <p class="flex justify-between px-1 text-orange-400 bg-gray-100 text-xs md:text-sm">{{ user.email }}
               </p>
-              <p class="p-2 "> {{ message.text }}</p>
+              <p class="p-2 text-sm md:text-md "> {{ message.text }}</p>
             </div>
           </li>
         </ul>
-        <div class="absolute bottom-0 bg-white">
-          <form class=" flex gap-2 items-center justify-between" v-if="user" @submit.prevent="sendMessage">
-            <textarea class="w-[530px] h-10 p-1 my-2 border-2 border-black rounded-lg focus:outline-none "
+        <div class="sticky bottom-0 ">
+          <form class=" flex gap-2 items-center " v-if="user" @submit.prevent="sendMessage">
+            <textarea class="w-[500px] h-10 p-1 my-2 border-2 border-black rounded-lg focus:outline-none "
               v-model="newMessage" type="text" required></textarea>
             <button class="p-2 ">
               <svg width="28px" height="28px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,8 +30,8 @@
             </button>
           </form>
         </div>
-        <div v-if="!user" class="text-lg text-center text-red-600">
-          <p>Plese join us with Register or login to chat with us</p>
+        <div v-if="!user" class=" h-full w-full flex items-center justify-center">
+          <p class="text-lg text-red-600">Plese join us with Register or login to chat with us</p>
           <headerbtn class="mt-4 bg-blue-500">
             <nuxt-link to="/login">Login</nuxt-link>
           </headerbtn>
@@ -47,25 +48,23 @@ export default {
     return {
       messages: [],
       newMessage: '',
+      chatUser: [],
       user: '',
+      
     }
   },
 
   async created() {
     // this.user = await this.$fire.auth.currentUser
-    console.log('created')
     await this.$fire.auth.onAuthStateChanged(async user => {
-      console.log('message', user)
       this.user = user;
       const userRef = this.$fire.firestore.collection('users').doc(user.uid)
       await userRef.collection('messages')
         .orderBy('timestamp', "asc")
         .onSnapshot(querySnapshot => {
           this.messages = querySnapshot.docs.map(doc => doc.data())
-          console.log(this.messages)
         })
     });
-
   },
 
   methods: {
@@ -76,8 +75,10 @@ export default {
         await userRef.collection('messages').add({
           email: this.user.email,
           text: this.newMessage,
-          timestamp: new Date()
+          timestamp: new Date(),
+          isRead:false,
         })
+      this.$store.dispatch('updateUnreadMessageCount', this.$store.getters.unreadMessageCount + 1);
         this.newMessage = ''
 
       }

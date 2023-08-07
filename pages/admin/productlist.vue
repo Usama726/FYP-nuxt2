@@ -1,9 +1,8 @@
 <template>
-  <div class="bg-gray-900 w-full ">
-    <div>
+  <div class="flex bg-gray-900 ">
       <admin-nav />
-      <div class="ml-56 px-16 pt-16">
-        <div class="flex justify-center border-2 border-gray-400 mb-2 rounded">
+      <div class="px-16 pt-16 w-full">
+        <div v-if="!showEditForm" class="flex justify-center border-2 border-gray-400 mb-2 rounded">
           <p class="text-3xl text-white font-bold p-3 ">
             Products List
           </p>
@@ -18,7 +17,7 @@
 
           </tr>
           <tr v-for="(product, index) in products" :key="index">
-          
+
             <td class="border-2 border-blue-200 px-2 py-2 ">
               <img class="h-24 w-full" :src="product.imageUrl" />
             </td>
@@ -26,7 +25,7 @@
               {{ product.name }}
             </td>
             <td class=" border-2 border-blue-200 px-1 py-2 text-justify ">
-              <div class="description-box px-1">
+              <div class="h-[96px] overflow-y-auto px-1">
                 <p class="border-r-2 border-gray-500 px-2 ">{{ product.description }}</p>
               </div>
             </td>
@@ -37,32 +36,28 @@
               <div class="flex gap-1 ">
                 <button @click="$router.push({
                   query: { id: product.id }
-                })" class="border px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 font-bold ">Edit</button>
+                })"
+                  class="border px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 font-bold ">Edit</button>
 
                 <button @click="deleteProduct(product.id)"
                   class="border px-4 py-2 rounded-lg text-white bg-red-600 hover:bg-red-700 font-bold ">Delete</button>
               </div>
             </td>
-         
+
           </tr>
         </table>
 
-        <div v-else="showEditForm">
-          <div class="px-16 ml-56 flex flex-col">
-
-          <div class="mx-6 pt-16 flex-1 align-center  mb-2 rounded">
-            <p class="border-2 border-gray-400 text-center rounded-lg text-3xl text-white font-bold py-3">
-             Edit your Product Details
+        <div v-else="showEditForm" class="px-16">
+          <div class=" border-2 border-gray-400 mb-2 rounded">
+            <p class="text-3xl text-white font-bold p-3 text-center">
+              Edit Your Product
             </p>
-
           </div>
-
-          <div class=" min-h-full  py-4 px-4 sm:px-6 lg:px-8 ">
-            <div class="w-full  space-y-2">
-              <form class=" bg-gray-900" @submit.prevent="updateProduct">
-
-                <div class="-mx-3 mb-6">
-                  <div class="w-full  px-3 mb-2">
+          <div class="py-4 pt-16 ">
+            <div class="space-y-2">
+              <form class="flex-1 bg-gray-900" @submit.prevent="updateProduct">
+                <div class=" mb-6">
+                  <div class="w-full mb-2">
                     <label class="text-center block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
                       for="grid-first-name">
                       Product Image
@@ -70,8 +65,8 @@
                     <img class="h-36 w-1/2 mx-auto mb-8" :src="editedProduct.imageUrl">
                     <!-- <input type="file" ref=fileInput > -->
                   </div>
-                  <div class="grid grig-cols-1 md:grid-cols-2">
-                    <div class="w-full  px-3 mb-2">
+                  <div class="grid grig-cols-1 md:grid-cols-2 gap-3">
+                    <div class="w-full  mb-2">
                       <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2"
                         for="grid-first-name">
                         Product Name
@@ -83,7 +78,7 @@
 
 
                     </div>
-                    <div class="w-full  px-3 ">
+                    <div class="w-full  ">
                       <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2 ">
                         Product Price
                       </label>
@@ -92,7 +87,7 @@
                         placeholder=" Enter Product Price" v-model="editedProduct.price">
                     </div>
                   </div>
-                  <div class="w-full  px-3 mb-2">
+                  <div class="w-full  mb-2">
                     <label class="block uppercase tracking-wide text-gray-300 text-xs font-bold mb-2">
                       Product Description
                     </label>
@@ -101,14 +96,9 @@
                       required type="text" id="description" placeholder="Enter Product Description"
                       v-model="editedProduct.description"></textarea>
                   </div>
-
-
-
                 </div>
-
                 <div class="flex gap-2">
-                  <button type="submit"
-                    class=" px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 font-bold ">
+                  <button type="submit" class=" px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 font-bold ">
                     Save Changes
                   </button>
                   <button type="button" @click="cancelEdit"
@@ -120,9 +110,8 @@
             </div>
           </div>
         </div>
-        </div>
       </div>
-    </div>
+    
   </div>
 </template>
       
@@ -190,10 +179,10 @@ export default {
     async updateProduct() {
       const { id, ...updatedProduct } = this.editedProduct
       await this.$fire.firestore.collection('products').doc(id).update(updatedProduct)
-      .then(()=>{
-        alert('Product Updated Successfully')
-        this.$router.push('/admin/productlist')
-      })
+        .then(() => {
+          alert('Product Updated Successfully')
+          this.$router.push('/admin/productlist')
+        })
     },
     async deleteProduct(productId) {
       await this.$fire.firestore.collection('products').doc(productId).delete()
@@ -215,11 +204,3 @@ export default {
 
 };
 </script>
-
-
-<style scoped>
-.description-box {
-  max-height: 96px;
-  overflow-y: auto;
-}
-</style>
