@@ -91,17 +91,17 @@
         </div>
       </section>
       <!-- Container for demo purpose -->
-      <div class="container my-24 mx-auto md:px-6">
+      <div class="container my-24 mx-auto px-8">
         <!-- Section: Design Block -->
         <section class="mb-32 text-center">
           <h2 class="mb-32 text-3xl font-bold">
             Meet the <span class="text-blue-400">team</span>
           </h2>
 
-          <div class="grid gap-x-6 md:grid-cols-3 lg:gap-x-12">
-            <div class="mb-24 md:mb-0">
+          <div class="grid gap-x-6 md:grid-cols-3 lg:gap-x-12 ">
+            <div class="mb-24 md:mb-0 ">
               <div
-                class="block h-full rounded-lg bg-blue-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+                class="  block h-full rounded-lg bg-blue-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
                 <div class="flex justify-center">
                   <div class="flex justify-center -mt-[75px]">
                     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/6.jpg"
@@ -231,23 +231,23 @@
           <div class="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
             <p class="p-2 text-sm font-medium tracking-wider text-center uppercase">How it works</p>
             <h2 class="mb-6 text-4xl font-bold leading-none text-center sm:text-5xl">Frequently Asked Questions</h2>
-            <p class="mt-2 mb-8 text-gray-400 text-center">Sagittis tempor donec id vestibulum viverra. Neque condimentum primis orci
+            <p class="mt-2 mb-8 text-gray-600 text-center">Sagittis tempor donec id vestibulum viverra. Neque condimentum primis orci
               at lacus amet bibendum.</p>
             <div class="space-y-4">
               <details class="w-full border border-blue-300 rounded-lg">
-                <summary class="px-4 py-6 focus:outline-none ">Ex orci laoreet egestas sapien
+                <summary class="px-4 py-6 focus:outline-none md:text-lg">Ex orci laoreet egestas sapien
                   magna egestas scelerisque?</summary>
                 <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">Lectus iaculis orci metus vitae ligula dictum per. Nisl
                   per nullam taciti at adipiscing est. </p>
               </details>
               <details class="w-full border border-blue-300 rounded-lg">
-                <summary class="px-4 py-6 focus:outline-none ">Lorem at arcu rutrum viverra
+                <summary class="px-4 py-6 focus:outline-none md:text-lg">Lorem at arcu rutrum viverra
                   metus sapien venenatis lobortis odio?</summary>
                 <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">Tincidunt ut hac condimentum rhoncus phasellus nostra.
                   Magna porttitor egestas tincidunt neque vehicula potenti. </p>
               </details>
               <details class="w-full border border-blue-300 rounded-lg">
-                <summary class="px-4 py-6 focus:outline-none ">Eleifend feugiat sollicitudin
+                <summary class="px-4 py-6 focus:outline-none md:text-lg">Eleifend feugiat sollicitudin
                   laoreet adipiscing bibendum suscipit erat?</summary>
                 <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">Justo libero tellus integer tincidunt justo semper
                   consequat venenatis aliquet imperdiet. Ultricies urna proin fusce nulla pretium sodales vel magna et

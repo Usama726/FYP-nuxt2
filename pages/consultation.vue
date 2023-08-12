@@ -76,9 +76,8 @@ export default {
           email: this.user.email,
           text: this.newMessage,
           timestamp: new Date(),
-          isRead:false,
+          isUnRead:true
         })
-      this.$store.dispatch('updateUnreadMessageCount', this.$store.getters.unreadMessageCount + 1);
         this.newMessage = ''
 
       }

@@ -11,10 +11,10 @@
       <p class="text-2xl text-center text-white mb-5">Users List</p>
       <ul v-for="(user, index) in users" :key="index">
         <nuxt-link :to="`/admin/chatUser/${user.id}`">
-          <li class="border px-8 rounded-full py-4 my-2">
+          <li @click="openChat" class="border px-8 rounded-full py-4 my-2">
             <div class="flex items-center justify-between">
               <p class="text-white text-sm md:text-md">{{ user.firstName }} {{ user.lastName }}</p>
-              <span class="bg-green-600 p-1 rounded-full" v-if="unreadMessageCount > 0">{{ unreadMessageCount }}</span>
+              <span v-if="unreadCount > 0" class="bg-green-600 p-1 rounded-full" > {{ unreadCount }}</span>
             </div>
           </li>
         </nuxt-link>
@@ -24,18 +24,37 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
   data() {
     return {
+      // modalIsOpen: false,
       users: [],
-      modalIsOpen: false
-
+      messages: [],
+      unreadCount:0,
+      unreadMessages:[]
+      
     }
   },
 
   async created() {
+    await this.$fire.auth.onAuthStateChanged(async user => {
+      this.user = user;
+      const userRef = this.$fire.firestore.collection('users').doc(user.uid)
+      await userRef.collection('messages')
+        .orderBy('timestamp', "asc")
+        .onSnapshot(querySnapshot => {
+          this.messages = querySnapshot.docs.map(doc => doc.data())
+        })
+    })
+    this.unreadMessages = this.messages.filter(message => message.isUnRead);
+    console.log(`unread messages: ${this.unreadMessages} `)
+
+    // Get the count of unread messages
+    this.unreadCount = this.unreadMessages.length;
+    console.log(`count :${this.unreadCount}`)
+    console.log(this.messages.length)
+
     const userslist = []
     await this.$fire.firestore.collection('users').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -48,18 +67,16 @@ export default {
     })
   },
   computed: {
-    ...mapGetters(['unreadMessageCount']),
-  },
-  // methods: {
-  //   async markMessageAsRead() {
-  //     // Update the message status in Firebase
-  //     const userRef = this.$fire.firestore.collection('users').doc(this.$route.params.id)
-  //     await userRef.collection('messages').doc().update({ isRead: true });
 
-  //     // Update the unreadMessageCount in Vuex
-  //     this.$store.dispatch('updateUnreadMessageCount', this.$store.getters.unreadMessageCount = 0);
-  //   }
-  // }
+  },
+  methods: {
+    openChat() {
+      this.messages.forEach(message => {
+        message.isUnRead = false;
+      });
+      this.unreadCount = 0
+    }
+  }
 }
 </script>
 
