@@ -11,11 +11,8 @@
       <p class="text-2xl text-center text-white mb-5">Users List</p>
       <ul v-for="(user, index) in users" :key="index">
         <nuxt-link :to="`/admin/chatUser/${user.id}`">
-          <li @click="openChat" class="border px-8 rounded-full py-4 my-2">
-            <div class="flex items-center justify-between">
-              <p class="text-white text-sm md:text-md">{{ user.firstName }} {{ user.lastName }}</p>
-              <span v-if="unreadCount > 0" class="bg-green-600 p-1 rounded-full" > {{ unreadCount }}</span>
-            </div>
+          <li >
+            <user :user="user"/>
           </li>
         </nuxt-link>
       </ul>
@@ -28,33 +25,12 @@
 export default {
   data() {
     return {
-      // modalIsOpen: false,
       users: [],
-      messages: [],
-      unreadCount:0,
-      unreadMessages:[]
-      
     }
   },
 
   async created() {
-    await this.$fire.auth.onAuthStateChanged(async user => {
-      this.user = user;
-      const userRef = this.$fire.firestore.collection('users').doc(user.uid)
-      await userRef.collection('messages')
-        .orderBy('timestamp', "asc")
-        .onSnapshot(querySnapshot => {
-          this.messages = querySnapshot.docs.map(doc => doc.data())
-        })
-    })
-    this.unreadMessages = this.messages.filter(message => message.isUnRead);
-    console.log(`unread messages: ${this.unreadMessages} `)
-
-    // Get the count of unread messages
-    this.unreadCount = this.unreadMessages.length;
-    console.log(`count :${this.unreadCount}`)
-    console.log(this.messages.length)
-
+    
     const userslist = []
     await this.$fire.firestore.collection('users').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -66,17 +42,7 @@ export default {
       this.users = userslist
     })
   },
-  computed: {
-
-  },
-  methods: {
-    openChat() {
-      this.messages.forEach(message => {
-        message.isUnRead = false;
-      });
-      this.unreadCount = 0
-    }
-  }
+  
 }
 </script>
 

@@ -4,7 +4,7 @@
     <!-- Users List  -->
     <users />
     <div class="relative h-[500px] overflow-y-auto border-2 border-black mt-8 mb-4 pt-2 px-2 w-2/3 md:w-1/2 m-auto ">
-      <div v-if="hasItems">
+      <div v-if="hasMessages">
         <ul class="w-2/3 p-2" :class="{ 'ml-auto': message.isAdmin }" v-for="message in messages" :key="message.id">
           <li>
             <div class=" mr-auto flex flex-col rounded-lg mb-3 p-2 border-gray-300 bg-blue-300 "
@@ -58,7 +58,7 @@ export default {
   },
 
   computed: {
-    hasItems() {
+    hasMessages() {
       return this.messages.length > 0; // Check if the array has items
     },
   },

@@ -63,6 +63,7 @@ export default {
         .orderBy('timestamp', "asc")
         .onSnapshot(querySnapshot => {
           this.messages = querySnapshot.docs.map(doc => doc.data())
+        console.log(this.messages.length)
         })
     });
   },

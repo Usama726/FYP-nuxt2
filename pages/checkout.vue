@@ -169,7 +169,6 @@ export default {
     removeFromCart(product) {
       this.$store.dispatch('cart/removeFromCart', product)
     },
-
     async uploadOrderDetails() {
       const userDetails = {
         FirstName: this.firstName,
@@ -182,7 +181,8 @@ export default {
       const checkoutData = {
         UserData: userDetails,
         CartData: this.getCartItems,
-        OrderPrice: this.getTotal
+        OrderPrice: this.getTotal,
+        newOrder:true
       }
       await this.$fire.firestore.collection('orders').add(checkoutData)
         .then(() => {
