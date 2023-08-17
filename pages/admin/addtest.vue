@@ -69,7 +69,7 @@ export default {
       testName: '',
       description: '',
       price: 0,
-      quantity:1,
+      quantity: 1,
       imageUrl: null
     }
   },
@@ -86,7 +86,7 @@ export default {
         testName: this.testName,
         description: this.description,
         price: this.price,
-        quantity:this.quantity,
+        quantity: this.quantity,
         imageUrl: this.imageUrl,
       })
         .then(() => {
