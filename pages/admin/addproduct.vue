@@ -107,8 +107,8 @@ export default {
             this.price = 0,
             this.$refs.fileInput.files = null,
             this.$router.push('/medicines')
-        })
-        .catch(error => {
+          })
+          .catch(error => {
           console.error(error)
           alert('Error adding product')
         })
@@ -116,9 +116,10 @@ export default {
     },
     cancelbtn() {
       this.productName = '',
-        this.description = '',
-        this.price = 0,
-        this.$refs.fileInput.files = null
+      this.description = '',
+      this.price = 0,
+      this.$refs.fileInput.files = null
+      this.$router.push('/admin/productlist')
     }
   }
 }

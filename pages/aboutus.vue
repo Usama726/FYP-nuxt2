@@ -19,12 +19,10 @@
             <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
               <div class="px-6 py-12 md:px-12">
                 <h2 class="mb-6 pb-2 text-3xl font-bold">
-                  Top quality product
+                  Top quality products
                 </h2>
                 <p class="mb-6 pb-2 text-neutral-500 ">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                  soluta corporis voluptate ab error quam dolores doloremque,
-                  quae consectetur.
+                  We offer a wide range of services .
                 </p>
                 <div class="mb-6 flex flex-wrap">
                   <div class="mb-4 w-full md:w-4/12">
@@ -42,7 +40,7 @@
                         stroke="currentColor" class="mr-3 h-5 w-5 text-neutral-700 ">
                         <path stroke-linecap="round" stroke-linejoin="round"
                           d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>Analytics
+                      </svg>Online
                     </p>
                   </div>
                   <div class="mb-4 w-full md:w-4/12">
@@ -51,7 +49,7 @@
                         stroke="currentColor" class="mr-3 h-5 w-5 text-neutral-700 ">
                         <path stroke-linecap="round" stroke-linejoin="round"
                           d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>Components
+                      </svg>Lab Tests
                     </p>
                   </div>
                   <div class="mb-4 w-full md:w-4/12">
@@ -60,7 +58,7 @@
                         stroke="currentColor" class="mr-3 h-5 w-5 text-neutral-700 ">
                         <path stroke-linecap="round" stroke-linejoin="round"
                           d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>Updates
+                      </svg>Consultation
                     </p>
                   </div>
                   <div class="mb-4 w-full md:w-4/12">
@@ -78,7 +76,7 @@
                         stroke="currentColor" class="mr-3 h-5 w-5 text-neutral-700 ">
                         <path stroke-linecap="round" stroke-linejoin="round"
                           d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>Mobile
+                      </svg>Mobile Friendly
                     </p>
                   </div>
                 </div>
@@ -231,33 +229,56 @@
           <div class="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
             <p class="p-2 text-sm font-medium tracking-wider text-center uppercase">How it works</p>
             <h2 class="mb-6 text-4xl font-bold leading-none text-center sm:text-5xl">Frequently Asked Questions</h2>
-            <p class="mt-2 mb-8 text-gray-600 text-center">Sagittis tempor donec id vestibulum viverra. Neque condimentum primis orci
-              at lacus amet bibendum.</p>
             <div class="space-y-4">
               <details class="w-full border border-blue-300 rounded-lg">
-                <summary class="px-4 py-6 focus:outline-none md:text-lg">Ex orci laoreet egestas sapien
-                  magna egestas scelerisque?</summary>
-                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">Lectus iaculis orci metus vitae ligula dictum per. Nisl
-                  per nullam taciti at adipiscing est. </p>
+                <summary class="px-4 py-6 focus:outline-none md:text-lg">How to order?</summary>
+                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">
+                  • Choose your desired product
+                  • Select the required quantity & Add to Cart
+                  • Apply discount code (if any) & click on 'Check Out'
+                  • Upload your prescription by clicking on 'Add image'. Please make sure that the image is as per
+                  prescription guidelines
+                  • Confirm your address & preferred mode of payment
+                  • Click on 'Confirm Order'
+                  • Your order has been successfully placed. </p>
               </details>
               <details class="w-full border border-blue-300 rounded-lg">
-                <summary class="px-4 py-6 focus:outline-none md:text-lg">Lorem at arcu rutrum viverra
-                  metus sapien venenatis lobortis odio?</summary>
-                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">Tincidunt ut hac condimentum rhoncus phasellus nostra.
-                  Magna porttitor egestas tincidunt neque vehicula potenti. </p>
+                <summary class="px-4 py-6 focus:outline-none md:text-lg"> How to use cart?</summary>
+                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">
+                  • You can access your cart by clicking at the top right
+                  corner of your web/app screen.
+                  • Add items to your cart by clicking on Add to Cart </p>
               </details>
               <details class="w-full border border-blue-300 rounded-lg">
-                <summary class="px-4 py-6 focus:outline-none md:text-lg">Eleifend feugiat sollicitudin
-                  laoreet adipiscing bibendum suscipit erat?</summary>
-                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">Justo libero tellus integer tincidunt justo semper
-                  consequat venenatis aliquet imperdiet. Ultricies urna proin fusce nulla pretium sodales vel magna et
-                  massa euismod vulputate sed. </p>
+                <summary class="px-4 py-6 focus:outline-none md:text-lg">How to login?</summary>
+                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">
+                  • Click on Log In or Register
+                  • Add all your respective details or choose an account
+                  • Enter your 6 digit OTP and submit
+                  • Success! You have logged in to your account! </p>
+              </details>
+              <details class="w-full border border-blue-300 rounded-lg">
+                <summary class="px-4 py-6 focus:outline-none md:text-lg">How do I upload my prescription?</summary>
+                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">
+                  • you will have an option to upload prescription.
+                  • Click on 'Add image' to add prescription And address details.
+                  • Please make sure that the image is as per prescription guidelines. </p>
+              </details>
+              <details class="w-full border border-blue-300 rounded-lg">
+                <summary class="px-4 py-6 focus:outline-none md:text-lg">Do I have to create an account to shop with you?
+                </summary>
+                <p class="px-4 py-6 pt-0 ml-4 -mt-4 text-gray-700">
+                  • Yes, you need to create an account before placing an order.
+
+                  •Creating a user account gives us the necessary information we need to process and deliver your order.
+                </p>
               </details>
             </div>
           </div>
         </section>
+      </div>
     </div>
+    <thefooter />
   </div>
-  <thefooter />
-</div></template>
+</template>
 

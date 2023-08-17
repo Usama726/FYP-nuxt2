@@ -15,21 +15,25 @@
             <th class="w-48 text-center bg-blue-500 text-white border px-4 py-2 ">Total Price</th>
           </tr>
           <tr v-for="(order, index) in orders" :key="index">
-            <td class="border px-8 py-4">
+            <td class="border px-8 py-4  h-24">
               <p>Name : {{ order.UserData.FirstName }} {{ order.UserData.LastName }}</p>
               <p> Email : {{ order.UserData.Email }}</p>
               <p> Address : {{ order.UserData.Address }}</p>
               <p> Phone : {{ order.UserData.Phone }}</p>
             </td>
-            <td class=" border px-8 py-4 flex items-center justify-between" v-for="cartData in order.CartData "
+            <td class=" border px-8 py-4 flex items-center justify-between  h-[200px] overflow-y-auto" v-for="cartData in order.CartData "
               :key="cartData.id">
-              <p>Product Name : {{ cartData.name }}</p>
-              <p>Product Price : {{ cartData.price }}</p>
-              <p>Product Quantity : {{ cartData.quantity }}</p>
+              <span class="border px-2 py-1">Product Name :  {{ cartData.name }}</span><br>
+              
+              <span class="border px-2 py-1">Product Price : {{ cartData.price }} </span><br> 
+              
+              <span class="border px-2 py-1">Product Quantity : {{ cartData.quantity }}</span><br>
+               
             </td>
-            <td class=" border px-8 py-4">
-              {{ order.OrderPrice }}
+            <td class=" border px-8 py-4  h-24">
+             <p class="text-center"> {{ order.OrderPrice }}</p>
             </td>
+
           </tr>
         </table>
       </div>

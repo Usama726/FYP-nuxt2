@@ -13,10 +13,10 @@
           <!-- Navbar -->
           <div class="hidden md:block">
             <ul class="flex justify-center pt-2 space-x-8 text-white uppercase align-center text-md">
-              <li><nuxt-link to="/" class="inline-block hover:scale-110">Home</nuxt-link></li>
-              <li><nuxt-link to="/aboutUs" class="inline-block hover:scale-110">About </nuxt-link></li>
-              <li><nuxt-link to="/medicines" class="inline-block hover:scale-110">Medicines</nuxt-link></li>
-              <li><nuxt-link to="/contactUs" class="inline-block hover:scale-110">Contact </nuxt-link></li>
+              <li><nuxt-link to="/" class="inline-block hover:scale-110 ">Home</nuxt-link></li>
+              <li><nuxt-link to="/aboutUs" class="inline-block hover:scale-110 ">About </nuxt-link></li>
+              <li><nuxt-link to="/medicines" class="inline-block hover:scale-110 ">Medicines</nuxt-link></li>
+              <li><nuxt-link to="/contactUs" class="inline-block hover:scale-110 ">Contact </nuxt-link></li>
             </ul>
           </div>
           <!-- Mobile toggle -->

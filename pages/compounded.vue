@@ -31,31 +31,31 @@
     </div>
     <div class="container mx-auto p-16 ">
       <div class=" container mx-auto border border-blue-100 shadow-lg mb-28 px-4 py-8 ">
-        <form>
+        <form @submit.prevent="uploadPrescription">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 ">
-          <div class="mb-8">
-            <label class="block mb-2 text-sm font-bold text-gray-700">
-              <span class="text-red-500">&nbsp;*</span>
-              Full Name
-            </label>
-            <div class="mt-1 rounded-md shadow-sm">
+            <div class="mb-8">
+              <label class="block mb-2 text-sm font-bold text-gray-700">
+                <span class="text-red-500">&nbsp;*</span>
+                Full Name
+              </label>
+              <div class="mt-1 rounded-md shadow-sm">
 
-              <input type="text" placeholder="Enter Your Full Name" required
-                class="block w-full px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600">
+                <input type="text" placeholder="Enter Your Full Name" v-model="fullName" required
+                  class="block w-full px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600">
+              </div>
+            </div>
+            <div class="mb-8">
+              <label class="block mb-2 text-sm font-bold text-gray-700">
+                <span class="text-red-500">&nbsp;*</span>
+                Email Address
+              </label>
+              <div class="mt-1 rounded-md shadow-sm">
+
+                <input type="email" placeholder="Enter Your Email" v-model="email" required
+                  class="block w-full px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600">
+              </div>
             </div>
           </div>
-          <div class="mb-8">
-            <label class="block mb-2 text-sm font-bold text-gray-700">
-              <span class="text-red-500">&nbsp;*</span>
-              Email Address
-            </label>
-            <div class="mt-1 rounded-md shadow-sm">
-
-              <input type="email" placeholder="Enter Your Email" required
-                class="block w-full px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600">
-            </div>
-          </div>
-        </div>
           <div class="mb-8">
             <label class="block mb-2 text-sm font-bold text-gray-700">
               <span class="text-red-500">&nbsp;*</span>
@@ -63,53 +63,36 @@
             </label>
             <div class="mt-1 rounded-md shadow-sm">
 
-              <input type="tel" placeholder="Enter Your Mobile Number" required
+              <input type="tel" placeholder="Enter Your Mobile Number" v-model="phone" required
                 class="block w-full px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600">
             </div>
           </div>
           <div class="mb-8">
             <label class="block mb-2 text-sm font-bold text-gray-700">
               <span class="text-red-500">&nbsp;*</span>
-              Message
+              Address
             </label>
             <div class="mt-1 rounded-md shadow-sm">
 
-              <textarea type="text" placeholder="Enter Your Message" required
+              <textarea type="text" placeholder="Enter Your Adddress Here" v-model="address" required
                 class="block w-full h-24 px-4 py-2 pr-10 mb-3 leading-tight text-gray-700 transition duration-500 ease-in-out border-2 border-blue-200 rounded shadow appearance-none focus:outline-none focus:bg-white focus:border-blue-600"></textarea>
             </div>
           </div>
           <div class="mb-8">
             <label class="block mb-2 text-sm font-bold text-gray-700">
               <span class="text-red-500">&nbsp;*</span>
-              Message
+              Upload Prescription
             </label>
             <div class="mt-1 rounded-md shadow-sm">
-              <input type="file" @change="previewImage" accept="image/*">
+              <input type="file" ref="fileInput" required>
             </div>
           </div>
 
-          <button type="button" data-te-ripple-init data-te-ripple-color="light"
+          <button type="submit"
             class="block rounded border border-blue-500 px-6 pt-2.5 pb-2 text-md font-bold uppercase leading-normal text-blue-500 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-blue-600 hover:text-white ">
             Send
           </button>
         </form>
-
-        <!-- <div>
-          <p>Progress: {{ uploadValue.toFixed() + "%" }}
-            <progress id="progress" :value="uploadValue" max="100"></progress>
-          </p>
-        </div>
-        <div v-if="imageData != null">
-          <img class="preview" :src="picture">
-          <br>
-          <div v-if="picture = null">
-            <button @click="onPreview">Preview</button>
-          </div>
-          <div v-else>
-            <button @click="onUpload">Upload</button>
-          </div>
-          <button @click="onCancel">Cancel</button>
-        </div>-->
       </div>
     </div>
     <Thefooter />
@@ -121,45 +104,42 @@ export default {
   name: 'Upload',
   data() {
     return {
-      imageData: null,
-      picture: null,
-      uploadValue: 0,
+      fullName: '',
+      email: '',
+      address: '',
+      phone: '',
       imageUrl: '',
     }
   },
   methods: {
-    previewImage(event) {
-      this.uploadValue = 0;
-      this.picture = null;
-      this.imageData = event.target.files[0];
-    },
+    async uploadPrescription() {
+      const file = this.$refs.fileInput.files[0]
+      const storageRef = this.$fire.storage.ref()
+      const imageRef = storageRef.child(`images/${file.name}`)
+      const snapshot = await imageRef.put(file)
+      this.imageUrl = await snapshot.ref.getDownloadURL()
 
-    onPreview() {
-      this.picture = null;
-      const storageRef = this.$fire.storage.ref(`${this.imageData.name}`).put(this.imageData);
-      storageRef.on(`state_changed`, snapshot => {
-        this.uploadValue = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      }, error => { console.log(error.message) },
-        () => {
-          this.uploadValue = 100;
-          storageRef.snapshot.ref.getDownloadURL().then((url) => {
-            this.picture = url;
-          });
-        }
-      );
+      this.$fire.firestore.collection('products').add({
+        fullName: this.fullName,
+        email: this.email,
+        address: this.address,
+        phone: this.phone,
+        imageUrl: this.imageUrl,
+      })
+        .then(() => {
+          alert('Prescription Uploaded successfully!')
+          this.fullName = '',
+            this.email = '',
+            this.address = '',
+            this.phone = '',
+            this.$refs.fileInput.files = null,
+            this.$router.push('/medicines')
+        })
+        .catch(error => {
+          console.error(error)
+          alert('Error in Upoading Prescription')
+        })
     },
-    onCancel() {
-      this.picture = null;
-      this.uploadValue = 0;
-      this.imageData = null
-
-    },
-    onUpload() {
-      this.picture = null;
-      this.uploadValue = 0;
-      this.imageData = null
-
-    }
 
   }
 }
@@ -177,41 +157,3 @@ img.preview {
 </style>
 
 
-<!-- <template>
-  <div>
-    <div>
-      <input type="file" ref="fileInput">
-      <button @click="upload">Upload</button>
-    </div>
-  
-  </div>
-</template>
-
-<script>
-
-export default {
-
-  data() {
-    return {
-user:'',
-    }
-  },
-  methods: {
-    async upload() {
-      this.user=this.$fire.auth.currentUser
-    if (this.user) {
-      const file = this.$refs.fileInput.files[0]
-      const storageRef = this.$fire.storage.ref()
-      const imageRef = storageRef.child(`users/${this.user.uid}/${file.name}`)
-      const snapshot = imageRef.put(this.imageFile)
-      const imageUrl = snapshot.getDownloadURL()
-      this.$fire.firestore.collection('users').doc(this.user.uid).collection("image").add(imageUrl)
-
-    }
-  }
-}
-}
-
-</script>
-
- -->

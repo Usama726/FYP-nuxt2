@@ -101,8 +101,9 @@
                 <span>Products</span>
               </nuxt-link>
             </li>
+           
             <li class="rounded-sm">
-              <nuxt-link to="/admin/addproduct" class="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700 ">
+              <nuxt-link to="/admin/addtest" class="flex items-center p-2 space-x-3 rounded-md hover:bg-gray-700 ">
                 <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#b5b5b5">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -115,7 +116,7 @@
                   </g>
                 </svg>
 
-                <span>Add Product</span>
+                <span>Add Test</span>
               </nuxt-link>
             </li>
             <li class="rounded-sm">
