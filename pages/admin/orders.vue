@@ -21,17 +21,17 @@
               <p> Address : {{ order.UserData.Address }}</p>
               <p> Phone : {{ order.UserData.Phone }}</p>
             </td>
-            <td class=" border px-8 py-4 flex items-center justify-between  h-[200px] overflow-y-auto" v-for="cartData in order.CartData "
-              :key="cartData.id">
-              <span class="border px-2 py-1">Product Name :  {{ cartData.name }}</span><br>
-              
-              <span class="border px-2 py-1">Product Price : {{ cartData.price }} </span><br> 
-              
+            <td class=" border px-8 py-4 flex items-center justify-between  h-[200px] overflow-y-auto"
+               v-for="cartData in order.CartData " :key="cartData.id">
+              <span class="border px-2 py-1">Product Name : {{ cartData.name }}</span><br>
+
+              <span class="border px-2 py-1">Product Price : {{ cartData.price }} </span><br>
+
               <span class="border px-2 py-1">Product Quantity : {{ cartData.quantity }}</span><br>
-               
+
             </td>
             <td class=" border px-8 py-4  h-24">
-             <p class="text-center"> {{ order.OrderPrice }}</p>
+              <p class="text-center"> {{ order.OrderPrice }}</p>
             </td>
 
           </tr>

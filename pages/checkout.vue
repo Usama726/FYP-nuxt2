@@ -45,7 +45,7 @@
                     class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                     v-model="phone">
                 </div>
-              </div>
+                                </div>
               <div class="mt-4">
                 <div class="w-full">
                   <label for="Address" class="block mb-3 text-sm font-semibold text-gray-500">Address</label>
@@ -151,6 +151,7 @@ export default {
     lastName: '',
     address: '',
     email: '',
+    cnic: '',
     phone: '',
     notes: '',
   }),
@@ -176,24 +177,25 @@ export default {
         Email: this.email,
         Phone: this.phone,
         Address: this.address,
+        CNIC: this.cnic,
         Notes: this.notes,
       }
       const checkoutData = {
         UserData: userDetails,
         CartData: this.getCartItems,
         OrderPrice: this.getTotal,
-        newOrder:true
+        newOrder: true
       }
       await this.$fire.firestore.collection('orders').add(checkoutData)
         .then(() => {
           alert('Product ordered successfully!')
           this.firstName = '',
-          this.lastName = '',
-          this.email = '',
-          this.phone = '',
-          this.address = '',
-          this.notes = '',
-          this.$router.push('/medicines')
+            this.lastName = '',
+            this.email = '',
+            this.phone = '',
+            this.address = '',
+            this.notes = '',
+            this.$router.push('/medicines')
           this.$store.commit('cart/clearCart');
         })
         .catch(error => {
