@@ -5,13 +5,14 @@
     <top-svg />
     <top-header><span class="text-red-800 "> Lab-Tests</span> With Ease Of <br>Home Sampling</top-header>
     <div class="mt-[180px] mb-16 mx-auto w-11/12 grid grid-cols-1 gap-10">
-      <div class="">
-        <div class=" pt-16 res-content">
-          <div class="res-icons">
+      <div class="w-full">
+        <div class="pt-16 res-content">
+          <div class="grid gap-3 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4">
 
-            <div class="res-iconItem">
+            <div
+              class="flex flex-col items-center justify-center gap-3 px-3 py-6 bg-white border rounded-md shadow-lg border-stone-300">
 
-              <img class="bg-blue-200"
+              <img class="w-8 h-8 mt-3 bg-blue-200 bg-cover"
                 src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/trustlab_icon_1.png?v=1652272545" alt="">
 
 
@@ -25,13 +26,14 @@
 
             </div>
 
-            <div class="res-iconItem">
+            <div
+              class="flex flex-col items-center justify-center gap-3 px-3 py-2 bg-white border rounded-md shadow-lg border-stone-300">
 
-              <img class="bg-blue-200" src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/home_icon_2.png?v=1652272572"
-                alt="">
+              <img class="w-8 h-8 mt-3 bg-blue-200 bg-cover"
+                src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/home_icon_2.png?v=1652272572" alt="">
 
 
-              <p class="res-iconItem-heading">Home Visit </p>
+              <p class="res-iconItem-heading ">Home Visit </p>
 
 
               <p class="res-iconItem-desc">With Wahab Pharmacy, you get professional phlebotomists to pick-up the sample
@@ -40,10 +42,11 @@
 
             </div>
 
-            <div class="res-iconItem">
+            <div
+              class="flex flex-col items-center justify-center gap-3 px-3 py-2 bg-white border rounded-md shadow-lg border-stone-300">
 
-              <img class="bg-blue-200" src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/time_icon_1.png?v=1652272590"
-                alt="">
+              <img class="w-8 h-8 mt-3 bg-blue-200 bg-cover"
+                src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/time_icon_1.png?v=1652272590" alt="">
 
 
               <p class="res-iconItem-heading">Timely and Accurate Reports </p>
@@ -54,9 +57,10 @@
 
             </div>
 
-            <div class="res-iconItem">
+            <div
+              class="flex flex-col items-center justify-center gap-3 px-3 py-2 bg-white border rounded-md shadow-lg border-stone-300">
 
-              <img class="bg-blue-200"
+              <img class="w-8 h-8 mt-3 bg-blue-200 bg-cover"
                 src="//cdn.shopify.com/s/files/1/0377/4899/8284/files/upto30_icon_1.png?v=1652272606" alt="">
 
 
@@ -74,8 +78,8 @@
         </div>
 
       </div>
-      <div class="container mx-auto py-8">
-        <h1 class=" text-center text-blue-500 text-lg md:text-3xl border-b-2 border-blue-100 pb-3 ">Lab Tests List</h1>
+      <div class="container py-8 mx-auto">
+        <h1 class="pb-3 text-lg text-center text-blue-500 border-b-2 border-blue-100 md:text-3xl">Lab Tests List</h1>
         <lab-test :product="product" v-for="(product, index) in tests" :key="`${product.id}-product-${index}`">
         </lab-test>
       </div>
@@ -120,16 +124,11 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* align-items: center;  */
+  gap: 10px;
+  align-items: center;
 }
 
-.res-iconItem {
-  width: calc(98%/4);
-  display: flex;
-  padding: 0rem 1rem;
-  flex-direction: column;
-  /* align-items: center; */
-}
+
 
 .res-iconItem img {
   width: 50px;
@@ -157,10 +156,11 @@ export default {
   color: #8897a2;
   font-size: 16px;
   font-weight: 300;
+  text-align: center;
 }
 
 .res-content {
-  max-width: 1024px;
+  max-width: 1640px;
   margin: auto;
 }
 

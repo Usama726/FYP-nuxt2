@@ -8,7 +8,7 @@
         <div class="flex justify-between w-full align-middle ">
           <!-- Header logo -->
           <div>
-            <nuxt-link to="/"><img src="~/assets/images/logo.png" class="logo-img"></nuxt-link>
+            <nuxt-link to="/"><img src="~/assets/images/Logo.png" class="logo-img"></nuxt-link>
           </div>
           <!-- Navbar -->
           <div class="hidden md:block">
@@ -93,7 +93,7 @@
 
           <div class="flex justify-between px-3 py-2 align-middle nav-bg">
             <div>
-              <img src="~/assets/images/logo.png" class="logo-img">
+              <img src="~/assets/images/Logo.png" class="logo-img">
             </div>
             <div class="close">
               <button @click="isOpen = false">
@@ -173,9 +173,9 @@
 
     <div v-if="modalIsOpen"
       class="fixed top-0 right-0 z-40 flex items-end justify-end w-full h-screen mr-auto transition-opacity bg-black bg-opacity-50 sm:block ">
-      <div class="relative w-full h-full ml-auto bg-white rounded-md md:w-4/12 xl:w-5/12 overflow-scroll">
-        <div class="fixed top-0 border-b-2 border-slate-300 bg-slate-100 w-full overflow-hidden">
-          <div class=" flex items-center justify-between z-60  px-6 py-3 w-5/12 ">
+      <div class="relative w-full h-full ml-auto overflow-scroll bg-white rounded-md md:w-4/12 xl:w-5/12">
+        <div class="fixed top-0 w-full overflow-hidden border-b-2 border-slate-300 bg-slate-100">
+          <div class="flex items-center justify-between w-5/12 px-6 py-3 z-60">
             <h1 class="text-xl font-bold text-blue-500">Your Bag</h1>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 cursor-pointer " @click="modalIsOpen = false">
@@ -199,7 +199,7 @@
             </div>
             <div>
               <button @click="removeFromCart(product)"
-                class="border-2 border-blue-500 hover:text-blue-500 p-2 font-bold rounded-lg">
+                class="p-2 font-bold border-2 border-blue-500 rounded-lg hover:text-blue-500">
                 Remove
               </button>
             </div>
@@ -211,19 +211,19 @@
             <h2 class="text-xl font-bold">Total Items in Cart : {{ getCartItems.length }}</h2>
           </div>
           <div
-            class="flex items-center w-full py-4 text-sm font-semibold border-y border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
+            class="flex items-center w-full py-4 text-sm font-semibold border-gray-300 border-y lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
             Subtotal : <span class="ml-2"> {{ getTotal }} </span>
           </div>
           <div
             class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
             Fix Shipping : <span class="ml-2">{{ shipping }}</span></div>
           <div v-if="getTotal > 0"
-            class="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0 mb-4">
+            class="flex items-center w-full py-4 mb-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
             Total : <span class="ml-2">{{ getTotal + shipping }}</span>
           </div>
           <div class="mt-4">
             <nuxt-link to="/checkout"
-              class="ml-3 px-3 py-1 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">
+              class="px-3 py-1 ml-3 text-xl font-bold text-blue-600 border-2 border-blue-500 rounded hover:bg-blue-600 hover:text-white">
               Checkout
             </nuxt-link>
           </div>

@@ -5,8 +5,8 @@
     <top-svg />
     <top-header>Get your All <span class="text-red-800 ">Medicines+</span><br>From Here</top-header>
     <div class=" mt-[150px] mx-auto flex flex-col items-center ">
-      <div class="flex items-center relative shadow-xl border border-blue-400 rounded-full overflow-hidden px-3 py-2">
-        <input class="h-9 w-[500px] focus:outline-none" v-model="searchQuery" @input="performSearch"
+      <div class="relative flex items-center px-3 py-2 overflow-hidden border border-blue-400 rounded-full shadow-xl">
+        <input class="px-12 py-1.5 w-full focus:outline-none" v-model="searchQuery" @input="performSearch"
           placeholder="Search products" />
         <button @click="performSearch" class="absolute right-3 ">
           <svg fill="currentColor" viewBox="0 0 512 512" class="w-5 h-5 dark:text-gray-900 ">
@@ -17,11 +17,11 @@
         </button>
       </div>
     </div>
-    <ul v-if="searchResults.length > 0" class="container mx-auto mb-4 flex gap-3 justify-around">
+    <ul v-if="searchResults.length > 0" class="container flex justify-around gap-3 mx-auto mb-4">
       <the-product :product="product" v-for="(product, index) in searchResults" :key="`${product.id}-product-${index}`">
       </the-product>
     </ul>
-    <div v-else  class="text-center text-2xl text-red-600 mt-4">{{ result }}</div>
+    <div v-else class="mt-4 text-2xl text-center text-red-600">{{ result }}</div>
     <div
       class="mt-[100px] mb-64 mx-auto w-11/12 grid grid-cols-1 md:grid-cols-3 lg:grid-col-4 xl:grid-cols-5 2xl:grid-cols-6 gap-10">
       <the-product :product="product" v-for="(product, index) in products" :key="`${product.id}-product-${index}`">
@@ -40,7 +40,7 @@ export default {
     products: [],
     searchQuery: '',
     searchResults: [],
-    result:""
+    result: ""
   }),
   async created() {
     const items = []
@@ -64,7 +64,7 @@ export default {
       }
       else {
         this.searchResults = []
-        this.result="No Results Found"
+        this.result = "No Results Found"
       }
     },
   }
